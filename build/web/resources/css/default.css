@@ -1,0 +1,430 @@
+body {
+    background-color: #ffffff;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;  
+    margin: 10px;
+}
+fundoTitulo{
+    background-color: #c2dfef;
+}
+.alinhaEmpresa1{
+
+    width: 520px;
+}
+
+.tirarBorda{
+    border-style: none;
+}
+.corPesquisa{
+    background-color: blue;
+}
+h1 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    border-bottom: 1px solid #AFAFAF; 
+    font-size:  16px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #D20005;
+}
+
+a:link, a:visited {
+    color: #045491;
+    font-weight : bold;
+    text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+    color: #045491;
+    font-weight : bold;
+    text-decoration : underline;
+}
+
+.sair
+{
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+
+    background-color: #FFF0A3;
+    height:100px; 
+    width: 100px;  
+    background-image: url(../img/sair.png);
+    background-position: center;
+    background-repeat:no-repeat;
+    background-position: center;
+
+
+}
+
+.sair:hover {
+    height:100px; 
+    width: 100px;  
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color:rgba(255,255,255,1);
+
+
+} 
+
+
+.usuarios
+{
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color: #FFEB99;
+
+    height:100px; 
+    width: 100px; 
+    background-image: url(../img/usuario.png);
+    background-position: center;
+    background-repeat:no-repeat;
+
+}
+.usuarios:hover {
+    height:100px; 
+    width: 100px;  
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color:rgba(255,255,255,1);
+
+
+
+} 
+.caixa{
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color: #FFE68F;
+
+    height:100px; 
+    width: 100px; 
+    background-image: url(../img/caixa.png);
+    background-position: center;
+    background-repeat:no-repeat;
+
+}
+.caixa:hover {
+    height:100px; 
+    width: 100px;  
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color:rgba(255,255,255,1);
+}
+.funcionario{
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color: #FFDC7B;
+
+    height:100px; 
+    width: 100px;
+    background-image: url(../img/funcionario.png);
+    background-position: center;
+    background-repeat:no-repeat;
+
+}
+.funcionario:hover {
+    height:100px; 
+    width: 100px;
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color:rgba(255,255,255,1);
+
+} 
+
+
+.compras
+{
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color: #FFD771;
+
+    height:100px; 
+    width: 100px; 
+    background-image: url(../img/compras.png);
+    background-position: center;
+    background-repeat:no-repeat;
+
+}
+.compras:hover {
+    height:100px; 
+    width: 100px;
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color:rgba(255,255,255,1);
+
+} 
+
+.cozinha{
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color: #FFD267;
+
+    height:100px; 
+    width: 100px; 
+    background-image: url(../img/cozinha.png);
+    background-repeat:no-repeat;
+    background-position: center;
+}
+.cozinha:hover {
+    height:100px; 
+    width: 100px;  
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color:rgba(255,255,255,1);
+
+} 
+
+
+.produtos
+{
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color: #FFCD5D;
+
+    height:100px; 
+    width: 100px;
+    background-image: url(../img/produtos.png);
+    background-repeat:no-repeat;
+    background-position: center;
+}
+.produtos:hover {
+    height:100px; 
+    width: 100px; 
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color:rgba(255,255,255,1);
+
+} 
+
+.bairro
+{
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color: #FFC853;
+
+    height:100px; 
+    width: 100px; 
+    background-image: url(../img/menu/bairro.png);
+    background-repeat:no-repeat;
+    background-position: center;
+}
+.bairro:hover {
+    height:100px; 
+    width: 100px; 
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color:rgba(255,255,255,1);
+
+} 
+
+.cliente
+{
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color: #FFC349;
+
+    height:100px; 
+    width: 100px;
+    background-image: url(../img/cliente.png);
+    background-repeat:no-repeat;
+    background-position: center;
+}
+.cliente:hover {
+    height:100px; 
+    width: 100px; 
+
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color:rgba(255,255,255,1);
+} 
+
+
+
+.pedido
+{
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color: #FFC03F;
+
+    height:100px; 
+    width: 110px;
+    background-image: url(../img/pedido.png);
+    background-position: center;
+    background-repeat:no-repeat;
+    background-color: #FFC03F;
+    // border-bottom: #E3E8F3 solid 2px;
+    //padding-left:34px;
+}
+.pedido:hover {
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color:rgba(255,255,255,1);
+    height:100px; 
+    width: 110px; 
+
+
+    // border-bottom: #3a6aad solid 9px;
+} 
+
+
+.relatorio
+{
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color: #FFE185;
+
+    height:100px; 
+    width: 100px; 
+    background-image: url(../img/menu/relatorio.png)!important;
+    background-repeat:no-repeat;
+    background-position: center;
+}
+.relatorio:hover {
+    height:100px; 
+    width: 100px; 
+    -webkit-transition-property:all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property:all;
+    -moz-transition-duration: 1s;
+    -o-transition-property:all;
+    -o-transition-duration: 1s;
+    -ms-transition-property:all;
+    -ms-transition-duration: 1s;
+    background-color:rgba(255,255,255,1);
+
+}
+
+
+.campo
+{
+
+    background-color: #E3E8F3;
+    border-bottom: #E3E8F3 solid 2px;
+    padding-left:34px;
+}

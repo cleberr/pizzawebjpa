@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl id="growl" showDetail="false" sticky="true" />  
+            <p:panelGrid columns="5" id="gridEdit">
+                <f:facet name="header">
+                    <p:outputLabel value="Cadastro de Bairros"/>
+
+                </f:facet>
+                <p:outputLabel value="Código" style="width:100px"/>
+                <p:outputLabel value="Bairro"/>
+                <p:outputLabel value="Cidade"/>
+                <p:outputLabel value="UF"/>
+                <p:outputLabel value="Taxa"/>
+                <p:inputText value="#{bairroBean.bairro.idBairro}" readonly="true" style="width:100px"/>
+                <p:inputText value="#{bairroBean.bairro.nome}"/>
+                <p:inputText value="#{bairroBean.bairro.cidade}"/>
+                <p:inputText value="#{bairroBean.bairro.uf}"/>
+
+                <p:inputText  value="#{bairroBean.bairro.taxaEntrega}"/>
+
+
+            </p:panelGrid> 
+            <!--<p:selectOneMenu effect="fade">
+                    <f:selectItem itemLabel="Empresa" itemValue="" />
+                    <f:selectItems value="#{classeBean.listaEmpresas()}"
+                                   var="emp"
+                                   itemLabel="#{emp.nome}"
+                                   itemValue="#{emp.id}"/>
+                </p:selectOneMenu>-->
+            <p:dataTable var="bairro" value="#{bairroBean.listBairros}">
+                <p:column headerText="Código">
+                    <h:outputText value="#{bairro.idBairro}" />
+                </p:column>
+
+                <p:column headerText="Bairro">
+                    <h:outputText value="#{bairro.nome}" />
+                </p:column>
+
+                <p:column headerText="Cidade">
+                    <h:outputText value="#{bairro.cidade}" />
+                </p:column>
+
+                <p:column headerText="UF">
+                    <h:outputText value="#{bairro.uf}" />
+                </p:column>
+                <p:column headerText="Taxa">
+                    <h:outputText value="#{bairro.taxaEntrega}" />
+                </p:column>
+                <p:column headerText="Alterar">
+                    <p:commandButton icon="ui-icon-search" actionListener="#{bairroBean.bairroSelecionado(bairro)}" ajax="false" />
+                </p:column>
+            </p:dataTable>
+            <p:commandButton value="Gravar" actionListener="#{bairroBean.gravarBairo}" update="growl">
+
+            </p:commandButton>
+            <p:commandButton value="Novo" actionListener="#{bairroBean.novo}" ajax="false">
+
+            </p:commandButton>
+        </h:form>
+    </h:body>
+</html>
+

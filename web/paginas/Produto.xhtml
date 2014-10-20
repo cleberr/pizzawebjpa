@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../template/menuPrincipal.xhtml">
+        <ui:define name="pagina">
+            <h:form> 
+                <p:panel header="Cadastro de Produto" style="width: 89%">
+                    <p:panel styleClass="tirarBorda">
+
+                        <h:outputText  value="Código   " />
+                        <p:inputText  value="#{produtosBean.produto.idProduto}" style="width:80px;margin-right: 20px;background-color:#57B2CC;color: white"/>
+                        <h:outputText  value=" Nome    "/>
+                        <p:inputText value="#{produtosBean.produto.nome}" style="width:450px;margin-right: 20px;background-color:#57B2CC;color: white"/>
+                        <h:outputText  value=" Medida    "/>
+                        <p:inputText value="#{produtosBean.produto.idUnidade}" style="width:30px;margin-right: 20px"/>
+                        <p:selectOneMenu  value="#{produtosBean.produto.idUnidade}" >
+                            <f:selectItem itemLabel="ML" itemValue="1" />
+                            <f:selectItem itemLabel="UN" itemValue="2" />
+                            <f:selectItem itemLabel="GRAMA" itemValue="3" />
+                            <f:selectItem itemLabel="KG" itemValue="4" />
+                        </p:selectOneMenu>
+                        <h:outputText  value=" Código de barras    "/>
+                        <p:inputText value="#{produtosBean.produto.codBarras}" style="width:150px"/>
+
+                    </p:panel>
+                    <p:panel styleClass="tirarBorda">
+                        <h:outputText  value="Descrição " />
+                        <h:inputText value="#{produtosBean.produto.descricao}" style="width:450px;margin-right: 20px"/>
+                        <h:outputText  value=" Qt. Minima "/>
+                        <p:inputText value="#{produtosBean.produto.quantidadeMinima}" style="width:40px;margin-right: 20px"/>
+                        <h:outputText  value=" Qt. Máxima "/>
+                        <p:inputText value="#{produtosBean.produto.quantidadeMaxima}" style="width:40px;margin-right: 20px"/>
+                        <h:outputText  value=" Valor de venda"/>
+                        <!--ENTIDADE DE VALOR DE VENDA? --><p:inputText value="#{produtosBean.produto.produtoVenda}" style="width:80px;margin-right: 20px"/>
+                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                            <h:outputText value="Tipo de Produto" />
+                            <p:selectOneRadio  id="tipoProduto" value="#{produtosBean.produto.idUnidade}">
+                                <f:selectItem  itemLabel="Pradão" itemValue="1" />
+                                <f:selectItem itemLabel="Matéria Prima" itemValue="2" />
+                                <f:selectItem itemLabel="Contém Matéria Prima" itemValue="3" />
+
+                            </p:selectOneRadio>
+                        </h:panelGrid>
+                    </p:panel>
+                    <br></br>
+                    <p:panel style="width: 85%">
+                        <h:outputText  value="Código   " />
+                        <p:inputText  value="#{produtosBean.produto.idProduto}" style="width:80px;margin-right: 20px;background-color:#57B2CC;color: white"/>
+                        <h:outputText  value=" Nome    "/>
+                        <p:inputText value="#{produtosBean.produto.nome}" style="width:450px;margin-right: 20px;background-color:#57B2CC;color: white"/>
+                        <h:outputText  value="Quantidade "/>
+                        <p:inputText value="#{produtosBean.produto.quantidadeMinima}" style="width:50px;margin-right: 20px"/>
+                        <p:commandButton value="Inserir"></p:commandButton>
+
+
+
+                    </p:panel>
+
+                    <p:dataTable  var="produtos" value="#{produtosBean.listProdutos}">
+                        <p:column headerText="Código">
+                            <h:outputText value="#{produtos.idProduto}" />
+                        </p:column>
+
+                        <p:column headerText="Nome" style="width: 450px;" >
+                            <h:outputText value="#{produtos.nome}" />
+                        </p:column>
+
+                        <p:column headerText="Quantidade">
+                            <!--precisa de quantidade --> <h:outputText value="#{produtos.quantidadeEmbalagem}" />
+                        </p:column>
+
+                    </p:dataTable>
+
+                    <br></br>
+                    <br></br>
+                    <h:panelGroup style="padding-left: 77%">
+                        <p:commandButton value="Gravar" actionListener="#{produtosBean.gravarProduto()}"></p:commandButton>
+                        <p:commandButton value="Novo" actionListener="#{produtosBean.novoCadastro()}"></p:commandButton>
+                    </h:panelGroup>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+
+</html>

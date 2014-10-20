@@ -1,0 +1,56 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07/09/2014, 12:50:19
+    Author     : cleber
+*/
+.fundo{
+    background-image: url(../img/fundo.jpg) !important; 
+}
+.panelLocal{
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+}
+.top {
+    filter:alpha(opacity=80);
+    opacity:0.8;
+    padding:50px 0 0 50px;
+}
+
+.someCssClassName {
+    background-image: url(../img/home.jpg)!important
+}
+.imagemNovo{ width: 16px; height: 16px; background-image: url(../img/home.jpg)!important;
+             background-position: center center !important;
+             width: 16px;
+             height: 16px;
+}
+.ui-widget .ui-calendar {
+
+    background-image:url(../img/home.jpg);
+}
+.ui-icon-excel {
+    background: url("../img/home.jpg")  no-repeat top left !important;
+}
+.image{
+    background: url(../img/home.jpg) no-repeat top left;
+}
+
+.ui-icon-myCancel{
+    background-image: url(../img/home.jpg) !important;
+}
+.ui-layout-west {  
+    z-index:20 !important;  
+    overflow:visible !important;;  
+}  
+
+.ui-layout-west .ui-layout-unit-content {  
+    overflow:visible !important;  
+}
+.disk {
+    background-image: url(../img/home.jpg) !important;
+}  

@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="../template/menuPrincipal.xhtml">
+            <ui:define name="pagina">
+                <h:form id="form1">
+                    <p:growl id="growl" showDetail="false" sticky="true" />  
+                    <p:panel id="empresa" header="Cadastro Empresa"> 
+                        <h:panelGrid columns="1">
+
+                            <h:outputText  value="Razão Social"/>
+                            <h:panelGroup>
+                            <p:inputText value="#{empresaBean.emp.nome}" style="width:400px"/>
+                            <p:commandButton title="Pesquisar por Empresa" icon="ui-icon-search" update="gridEmpresa,growl" oncomplete="PF('empresaDIalog').show()" ajax="true" actionListener="#{empresaBean.pesqEmpresas()}" style="margin-left: 5px;height: 25px"/>
+                            </h:panelGroup>
+                            <h:outputText value="Nome Fantasia"/>
+                            <p:inputText  value="#{empresaBean.emp.nomeFantasia}" style="width:400px"/>
+                            <h:outputText value="CNPJ"/>
+                            <p:inputText value="#{empresaBean.emp.cnpj}"/>
+
+
+                        </h:panelGrid>
+                    </p:panel>
+                    <p:panel  header="Cadastro Endereço" id="enderecoPanel"> 
+
+                        <h:panelGrid columns="2" >
+                            <h:outputText  value="Logradouro"/>
+                            <h:outputText  value="Número"/>
+                            <h:panelGroup>
+                                <p:inputText value="#{empresaBean.localidadeEmp.logradouro}" style="width:400px"/>
+                                <p:commandButton title="Pesquisar por Logradouro" icon="ui-icon-search" update="gridLocalidade,growl" oncomplete="PF('localidadeDIalog').show()" ajax="true" actionListener="#{empresaBean.pesqLocalidadePorRua()}" style="margin-left: 5px;height: 25px"/>
+                            </h:panelGroup>
+                            <p:inputText value="#{empresaBean.emp.enderecoEmpresa.numero}" style="width:80px"/> 
+                            <h:outputText  value="Complemento"/>
+                            <h:outputText  value="Cep"/>
+                            <p:inputText value="#{empresaBean.emp.enderecoEmpresa.complemento}" style="width:400px"/>
+                            <h:panelGroup>
+                                <p:inputMask mask="99999-999" value="#{empresaBean.localidadeEmp.cep}" style="width:80px"/>
+                                <p:commandButton title="Pesquisar por CEP" icon="ui-icon-search" update="gridLocalidade,growl" oncomplete="PF('localidadeDIalog').show()" ajax="true" actionListener="#{empresaBean.pesqLocalidadePorCep()}" style="margin-left: 5px;height: 25px"/>
+                            </h:panelGroup>
+                            <h:outputText  value="Bairro"/>
+                            <h:outputText  value=""/>
+                            <h:panelGroup>
+                                <p:inputText value="#{empresaBean.localidadeEmp.bairro}" style="width:400px"/>
+                                <p:commandButton title="Pesquisar por Bairro" icon="ui-icon-search" update="gridLocalidade,growl" oncomplete="PF('localidadeDIalog').show()" ajax="true" actionListener="#{empresaBean.pesqLocalidadePorBairro()}" style="margin-left: 5px;height: 25px"/>
+                            </h:panelGroup>
+                            <h:outputText  value=""/>
+                            <h:outputText  value="Cidade"/>
+                            <h:outputText  value="UF"/>
+                            <p:inputText value="#{empresaBean.localidadeEmp.cidade}" style="width:400px"/>
+                            <p:inputText value="#{empresaBean.localidadeEmp.uf}" style="width:80px"/>
+
+                        </h:panelGrid>
+
+                    </p:panel>
+
+                    <p:panel  header="Telefones"> 
+
+                        <h:panelGrid columns="2" id="incluirTelefone">
+                            <h:outputText  value="DDD"/>
+                            <h:outputText  value="Telefone"/>
+                            <p:inputText value="#{empresaBean.telefone.ddd}" style="width:80px"/>
+
+                            <h:panelGroup>
+                                <p:inputText value="#{empresaBean.telefone.telefone}" style="width:150px"/>
+                                <p:commandButton title="Incluir Telefone" update="gridTelefone, incluirTelefone" icon="ui-icon-check"  ajax="true" actionListener="#{empresaBean.incluirTelefone()}" style="margin-left: 5px;height: 25px"/>
+                            </h:panelGroup>
+
+
+                        </h:panelGrid>
+                        <p:dataTable style="width:  550px" id="gridTelefone" var="telefone" value="#{empresaBean.emp.telefoneEmpresaList}" scrollHeight="75%">
+                            <p:column headerText="DDD"  style="width:  50px">
+                                <h:outputText value="#{telefone.ddd}" />
+                            </p:column>
+
+                            <p:column headerText="Telefone" >
+                                <h:outputText value="#{telefone.telefone}" style="width: 150px" />
+                            </p:column>
+                            <p:column headerText="Alterar">
+                                <p:commandButton icon="ui-icon-check"  actionListener="#{empresaBean.telefoneSelecionado(telefone)}" ajax="false" />
+                            </p:column>
+                        </p:dataTable>
+                    </p:panel>
+                    <p:panel  header="Configuração de Entrega"> 
+                        <h:panelGrid columns="5" id="incluirConfiguracao">
+                            <h:outputText  value="Kilometragem minima"/>
+                            <h:outputText  value="Taxa de Entrega"/>
+                            <h:outputText  value="trecho"/>
+                            <h:outputText  value="Início"/>
+                            <h:outputText  value="Final"/>
+                            <p:inputText value="#{empresaBean.configKM.kmMinimo}" style="width:150px"/>
+                            <p:inputText value="#{empresaBean.configKM.taxaEntrega}" style="width:150px"/>
+                            <p:inputText value="#{empresaBean.configKM.trecho}" style="width:150px"/>
+                            <p:calendar id="dataini" value="#{empresaBean.configKM.data_inicial}" pattern="dd/MM/yyyy/"/>
+
+                            <h:panelGroup>
+                                <p:calendar id="datafim" value="#{empresaBean.configKM.data_final}"  pattern="dd/MM/yyyy/"/>
+                                <p:commandButton title="Incluir Confiruração" update="gridConfKM, incluirConfiguracao" icon="ui-icon-check"  ajax="true" actionListener="#{empresaBean.incluirConfKM()}" style="margin-left: 5px;height: 25px"/>
+                            </h:panelGroup>
+
+
+                        </h:panelGrid>
+                        <p:dataTable style="width:  550px" id="gridConfKM" var="conf" value="#{empresaBean.emp.empresaConfKM}" scrollHeight="75%">
+                            <p:column headerText="Km Mínimo"  style="width:  50px">
+                                <h:outputText value="#{conf.kmMinimo}" />
+                            </p:column>
+
+                            <p:column headerText="Taxa" >
+                                <h:outputText value="#{conf.taxaEntrega}" style="width: 150px" />
+                            </p:column>
+                            <p:column headerText="Trecho" >
+                                <h:outputText value="#{conf.trecho}" style="width: 150px" />
+                            </p:column>
+                            <p:column headerText="Início" >
+                                <h:outputText value="#{conf.data_inicial}" style="width: 150px" />
+                            </p:column>
+                            <p:column headerText="Final" >
+                                <h:outputText value="#{conf.data_final}"  style="width: 150px" />
+                            </p:column>
+                            <p:column headerText="Alterar">
+                                <p:commandButton icon="ui-icon-check"  actionListener="#{empresaBean.confKMSelecionado(conf)}" ajax="false" />
+                            </p:column>
+                        </p:dataTable>
+
+                    </p:panel>
+
+                    <p:panel  header="Configuração por Rua"> 
+
+                        <h:panelGrid columns="3" id="incluirRua">
+                            <h:outputText  value="Rua"/>
+                            <h:outputText  value="Cep"/>
+                            <h:outputText  value="Valor"/>
+                            <p:inputText value="#{empresaBean.configRua.localidade.logradouro}" style="width:80px"/>
+                            <h:panelGroup>
+                                <p:inputText value="#{empresaBean.configRua.localidade.cep}" style="width:80px"/>
+                                <p:commandButton title="Pesquisar por Cep" icon="ui-icon-search" update="gridconfRuas,growl" oncomplete="PF('confLocalidadeDIalog').show()" ajax="true" actionListener="#{empresaBean.pesqLocalidadePorCepConfRua()}" style="margin-left: 5px;height: 25px"/>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:inputText value="#{empresaBean.configRua.taxaEntrega}" style="width:150px"/>
+                                <p:commandButton title="Incluir Rua" update="gridRua, incluirRua" icon="ui-icon-check"  ajax="true" actionListener="#{empresaBean.incluirConfRua()}" style="margin-left: 5px;height: 25px"/>
+                            </h:panelGroup>
+
+
+                        </h:panelGrid>
+                        <p:dataTable style="width:  550px" id="gridRua" var="rua" value="#{empresaBean.emp.empresaConfRuas}" scrollHeight="75%">
+                            <p:column headerText="rua"  style="width:  50px">
+                                <h:outputText value="#{rua.localidade.logradouro}" />
+                            </p:column>
+
+                            <p:column headerText="Cep" >
+                                <h:outputText value="#{rua.localidade.cep}" style="width: 150px" />
+                            </p:column>
+                            <p:column headerText="Taxa" >
+                                <h:outputText value="#{rua.taxaEntrega}" style="width: 150px" />
+                            </p:column>
+                            <p:column headerText="Alterar">
+                                <p:commandButton icon="ui-icon-check"  actionListener="#{empresaBean.confRuaSelecionado(rua)}" ajax="false" />
+                            </p:column>
+                        </p:dataTable>
+                    </p:panel>
+
+
+                    <p:dialog widgetVar="localidadeDIalog" modal="true" width="50%" header="Endereços">
+                        <p:dataTable id="gridLocalidade" var="localidade" value="#{localidadeBean.listLocalidades}" scrollHeight="75%">
+                            <p:column headerText="Logradouro" >
+                                <h:outputText value="#{localidade.logradouro}" />
+                            </p:column>
+
+                            <p:column headerText="Cep">
+                                <h:outputText value="#{localidade.cep}" />
+                            </p:column>
+
+                            <p:column headerText="Bairro">
+                                <h:outputText value="#{localidade.bairro}" />
+                            </p:column>
+
+                            <p:column headerText="Cidade">
+                                <h:outputText value="#{localidade.cidade}" />
+                            </p:column>
+                            <p:column headerText="UF">
+                                <h:outputText value="#{localidade.uf}" />
+                            </p:column>
+                            <p:column headerText="Atualização">
+                                <h:outputText value="#{localidade.ultimaAtualizacao}" />
+                            </p:column>
+                            <p:column headerText="Alterar">
+                                <p:commandButton icon="ui-icon-check"  oncomplete="PF('localidadeDIalog').hide()" actionListener="#{empresaBean.localidadeSelecionado(localidade)}" ajax="false" />
+                            </p:column>
+                        </p:dataTable>
+
+
+                    </p:dialog>
+
+                    <!--pesquisa de empresas cadastradas-->
+                    <p:dialog widgetVar="empresaDIalog" modal="true" width="50%" header="Empresa">
+                        <p:dataTable id="gridEmpresa" var="emp" value="#{empresaBean.empresas}" scrollHeight="75%">
+                            <p:column headerText="Noome" >
+                                <h:outputText value="#{emp.nome}" />
+                            </p:column>
+
+                            <p:column headerText="Noome fantasia" >
+                                <h:outputText value="#{emp.nomeFantasia}" />
+                            </p:column>
+
+                            <p:column headerText="CNPF">
+                                <h:outputText value="#{emp.cnpj}" />
+                            </p:column>
+
+                           
+                            <p:column headerText="Selecionar">
+                                <p:commandButton icon="ui-icon-check"  oncomplete="PF('empresaDIalog').hide()" actionListener="#{empresaBean.empresaSelecionado(emp)}" ajax="false" />
+                            </p:column>
+                        </p:dataTable>
+
+
+                    </p:dialog>
+                    <!--dialog pesquisar ruas e configurar taxa de entrega-->
+                    <p:dialog widgetVar="confLocalidadeDIalog" modal="true" width="50%" header="Endereços">
+
+                        <p:dataTable id="gridconfRuas" var="confRuas" value="#{empresaBean.configRuas}" scrollHeight="75%">
+                            <p:column headerText="taxa" >
+                                <h:outputText value="#{confRuas.taxaEntrega}" />
+                            </p:column>
+                            <p:column headerText="Logradouro" >
+                                <h:outputText value="#{confRuas.localidade.logradouro}" />
+                            </p:column>
+
+                            <p:column headerText="Cep">
+                                <h:outputText value="#{confRuas.localidade.cep}" />
+                            </p:column>
+
+                            <p:column headerText="Bairro">
+                                <h:outputText value="#{confRuas.localidade.bairro}" />
+                            </p:column>
+
+                            <p:column headerText="Cidade">
+                                <h:outputText value="#{confRuas.localidade.cidade}" />
+                            </p:column>
+                            <p:column headerText="UF">
+                                <h:outputText value="#{localidade.uf}" />
+                            </p:column>
+                            <p:column headerText="Atualização">
+                                <h:outputText value="#{confRuas.localidade.ultimaAtualizacao}" />
+                            </p:column>
+                            <p:column headerText="Alterar">
+                                <p:commandButton icon="ui-icon-check"  oncomplete="PF('localidadeDIalog').hide()" actionListener="#{empresaBean.localidadeSelecionado(localidade)}" ajax="false" />
+                            </p:column>
+                        </p:dataTable>
+                        <br/>
+                        <h:panelGrid columns="1">
+                            <h:outputText  value="Taxa"/>
+                            <h:panelGroup>
+                                <p:inputText value="#{empresaBean.taxaPadrao}" style="width:300px"/>
+                                <p:commandButton value="Incluir taxa" icon="ui-icon-check" update="gridconfRuas"  actionListener="#{empresaBean.incluirIaxaPadrao()}" ajax="true" />
+                                <p:commandButton icon="ui-icon-check"  oncomplete="PF('localidadeDIalog').hide()" actionListener="#{empresaBean.incluirRuasSelecionadas()}" ajax="false" />
+                            </h:panelGroup>
+                        </h:panelGrid>
+                    </p:dialog>
+
+
+                    <br/>
+                    <h:panelGroup  >
+                        <p:commandButton value="Novo" actionListener="#{empresaBean.novaEmp()}"  ajax="false" style="margin-left: 5px;height: 25px"/>
+                        <p:commandButton value="Gravar" actionListener="#{empresaBean.gravarEmp()}"  ajax="false" style="margin-left: 5px;height: 25px"/>
+
+                    </h:panelGroup>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+ 
+    <persistence-unit name="pizzawebPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>Entity.TelefonePessoa</class>
+    <class>Entity.Pessoa</class>
+    <class>Entity.CompraProdutos</class>
+    <class>Entity.ContasReceber</class>
+    <class>Entity.Usuario</class>
+    <class>Entity.ContasPagar</class>
+    <class>Entity.ProdutoComposicao</class>
+    <class>Entity.PerfilFuncionalidade</class>
+    <class>Entity.EnderecoEmpresa</class>
+    <class>Entity.UnidadeMedida</class>
+    <class>Entity.TipoPessoa</class>
+    <class>Entity.Pedido</class>
+    <class>Entity.Funcionario</class>
+    <class>Entity.ValorVenda</class>
+    <class>Entity.Entregador</class>
+    <class>Entity.Fornecedor</class>
+    <class>Entity.Perfil</class>
+    <class>Entity.TelefoneEmpresa</class>
+    <class>Entity.Compra</class>
+    <class>Entity.TipoTelefone</class>
+    <class>Entity.Produto</class>
+    <class>Entity.FormaPagamento</class>
+    <class>Entity.Endereco</class>
+    <class>Entity.Conta</class>
+    <class>Entity.Sangria</class>
+    <class>Entity.Cliente</class>
+    <class>Entity.Caixa</class>
+    <class>Entity.Funcionalidade</class>
+    <class>Entity.Bairro</class>
+    <class>Entity.Empresa</class>
+    <class>Entity.TipoPagamento</class>
+    <class>Entity.Banco</class>
+    <class>Entity.ItemPedido</class>
+    
+   <properties>
+           	<property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pizzaweb"/>
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="root" />
+        </properties>
+ 
+    </persistence-unit>
+</persistence>

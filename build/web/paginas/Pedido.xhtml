@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+     
+    </head>
+    <body>
+        
+        <p:growl id="growl" showDetail="false" sticky="true" />  
+            <p:panelGrid columns="5" id="gridEdit">
+                <f:facet name="header">
+                    <p:outputLabel value="Cadastro de Bairros"/>
+
+                </f:facet>
+                <p:outputLabel value="Telefone" style="width:100px"/>
+                <p:inputText value="#{usuarioBean.usuario.idPerfil}" readonly="true" style="width:100px"/>
+                
+                <p:outputLabel value="Nome"/>
+                <p:inputText value="#{bairroBean.bairro.nome}"/>
+                
+                <p:outputLabel value="data nasc.:"/>
+                <p:inputText value="#{bairroBean.bairro.cidade}"/>
+
+                <p:outputLabel value="end:"/>
+                <p:inputText value="#{bairroBean.bairro.uf}"/>
+                
+                <p:outputLabel value="Comp"/>
+                <p:inputText  value="#{bairroBean.bairro.taxaEntrega}"/>
+
+                <p:outputLabel value="Bairro" for="dd"/>
+                <p:inputText  value="#{bairroBean.bairro.taxaEntrega}"/>
+
+                
+                
+                
+                
+
+            </p:panelGrid> 
+    </body>
+</html>
