@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import util.EntityManagerUtil;
 
 /**
  *
@@ -19,7 +20,7 @@ import javax.persistence.Query;
 public class EmpresaJpaController implements Serializable {
     private EntityManager em = null;
 public EmpresaJpaController(EntityManager manager) {
-        this.em = manager;
+        this.em= EntityManagerUtil.getEntityManager(); // = manager;
     }
     
     public Empresa gravarEmpresa(Empresa emp)

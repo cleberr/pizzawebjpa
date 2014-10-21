@@ -45,13 +45,13 @@ public class Empresa implements Serializable {
     @Column(name = "NOME_FANTASIA")
     private String nomeFantasia;
 
-    @OneToMany(fetch= FetchType.EAGER, cascade = ALL, mappedBy = "idEmpresa" )
+    @OneToMany(fetch= FetchType.LAZY, cascade = ALL, mappedBy = "idEmpresa" )
     private List<TelefoneEmpresa> telefoneEmpresaList;
 
-    @OneToMany(fetch= FetchType.EAGER, cascade = ALL, mappedBy = "idEmpresa")
+    @OneToMany(fetch= FetchType.LAZY, cascade = ALL, mappedBy = "idEmpresa")
      private List<EmpresaConfigKM> EmpresaConfKMs;
 
-    @OneToMany(fetch= FetchType.EAGER, cascade = ALL, mappedBy = "idEmpresa")
+    @OneToMany(fetch= FetchType.LAZY, cascade = ALL, mappedBy = "idEmpresa")
     private List<EmpresaConfigRua> EmpresaConfRuas;
 
     @Embedded
