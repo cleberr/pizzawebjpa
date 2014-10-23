@@ -24,29 +24,35 @@ import javax.servlet.http.HttpServletRequest;
 @ManagedBean(name = "produtosBean")
 @SessionScoped
 public class ProtudosBean {
-  private Produto produto= new Produto();
+
+    private Produto produto = new Produto();
     private List<Produto> listProdutos = new ArrayList<Produto>();
 
-    
-    public void novoCadastro()
-    {
-     produto= new Produto();
+    public void novoCadastro() {
+        produto = new Produto();
     }
-    
-    public  void gravarProduto(){
-        ProdutosRN prn= new ProdutosRN(getEntityManager());
+
+    public void pesqProduto() {
+        if (!"".equals(this.produto.getNome())) {
+            ProdutosRN prn = new ProdutosRN();
+            listProdutos = prn.pesqProdutos(this.produto.getNome());
+            System.out.print(listProdutos.size());
+        }
+    }
+
+    public void gravarProduto() {
+        ProdutosRN prn = new ProdutosRN();
         try {
+            //  produto.setNome("ok");
             prn.gravarProduto(produto);
             addMessage("Registro Gravado.");
             novoCadastro();
         } catch (Exception ex) {
             addMessage("Não foi possivel gravar " + ex.getMessage());
         }
-    
+
     }
-    
-    
-    
+
     public Produto getProduto() {
         return produto;
     }
@@ -62,8 +68,8 @@ public class ProtudosBean {
     public void setListProdutos(List<Produto> listProdutos) {
         this.listProdutos = listProdutos;
     }
-    
-  private EntityManager getEntityManager() {
+
+    private EntityManager getEntityManager() {
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
         HttpServletRequest request = (HttpServletRequest) ec.getRequest();
@@ -76,5 +82,5 @@ public class ProtudosBean {
         FacesMessage ms = new FacesMessage(FacesMessage.SEVERITY_INFO, message, null);
         FacesContext.getCurrentInstance().addMessage("growl", ms);
     }
-    
+
 }

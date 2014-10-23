@@ -78,6 +78,8 @@ public class Produto implements Serializable {
     private String codBarras;
     @Column(name = "ID_UNIDADE")
     private Integer idUnidade;
+    @Column(name = "ID_TIPO")
+    private Integer idTipo;
     @Column(name = "ID_USUARIO_CADASTRO")
     private Integer idUsuarioCadastro;
     @Column(name = "QUANTIDADE_EMBALAGEM")
@@ -268,6 +270,15 @@ public class Produto implements Serializable {
         this.padroa = padroa;
     }
 
+    public Integer getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(Integer idTipo) {
+        this.idTipo = idTipo;
+    }
+
+    
     @Override
     public String toString() {
         return "Entity.Produto[ idProduto=" + idProduto + " ]";

@@ -16,24 +16,23 @@ import javax.persistence.EntityManager;
  */
 public class ProdutosRN {
     
-    private EntityManager em = null;
-    public ProdutosRN(EntityManager em)
+   public ProdutosRN()
     {
-        this.em=em;
+     
     }
 
-      public List<Produto> pesqProdutos(Integer idemp, String nomeProduto)
+      public List<Produto> pesqProdutos(String nomeProduto)
     {
         List<Produto> list=null;
-        ProdutoJpaController jpaController= new ProdutoJpaController(this.em);
-       list= jpaController.pesqProdutos(idemp,nomeProduto);
+        ProdutoJpaController jpaController= new ProdutoJpaController();
+        list= jpaController.pesqProdutos(nomeProduto);
       
       return list;
     }
     
    public Produto gravarProduto(Produto produto)
     {
-      ProdutoJpaController jpaController= new ProdutoJpaController(this.em);
+      ProdutoJpaController jpaController= new ProdutoJpaController();
       return jpaController.gravarProduto(produto);
     }
     

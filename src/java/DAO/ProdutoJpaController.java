@@ -20,6 +20,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import repository.exceptions.NonexistentEntityException;
 import repository.exceptions.PreexistingEntityException;
+import util.EntityManagerUtil;
 
 /**
  *
@@ -27,15 +28,14 @@ import repository.exceptions.PreexistingEntityException;
  */
 public class ProdutoJpaController implements Serializable {
     private EntityManager em=null;
-    public ProdutoJpaController(EntityManager em) {
-        this.em = em;
+    public ProdutoJpaController() {
+        this.em = EntityManagerUtil.getEntityManager();
     }
     
-    public  List<Produto> pesqProdutos(Integer idemp, String nomeProduto)
+    public  List<Produto> pesqProdutos(String nomeProduto)
     {
-     Query query = em.createQuery("select p from Produto p where p.nome like :nome p.ativo='S' and  (p.idempresa=:idemp or p.padroa='S') ORDER BY p.nome", Produto.class);
+     Query query = em.createQuery("select p from Produto p where p.nome like :nome and p.ativo='S' ORDER BY p.nome", Produto.class);
          query.setParameter("nome",nomeProduto+"%");
-         query.setParameter("idemp",idemp);
          return query.getResultList();  
         
     }
@@ -44,6 +44,7 @@ public class ProdutoJpaController implements Serializable {
     {
         Produto produtoRetorno= null;
      try {
+         em.getTransaction().begin();
            if ((p.getIdProduto()==null) ||(p.getIdProduto()==0)){
               em.persist(p);
             
@@ -51,7 +52,9 @@ public class ProdutoJpaController implements Serializable {
            else
            { 
               produtoRetorno= em.merge(p);}
+           em.getTransaction().commit();
          } catch (Exception ex) {
+             em.getTransaction().rollback();
             throw ex;
              
             

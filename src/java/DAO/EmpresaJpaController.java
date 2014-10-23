@@ -26,6 +26,7 @@ public EmpresaJpaController(EntityManager manager) {
     public Empresa gravarEmpresa(Empresa emp)
     {   Empresa empRetEmpresa=null;
         try {
+            em.getTransaction().begin();
            if ((emp.getIdEmpresa()==null) ||(emp.getIdEmpresa()==0)){
                System.out.println(emp.getTelefoneEmpresaList().size());
                if (emp.getTelefoneEmpresaList().size()==0)
@@ -36,7 +37,9 @@ public EmpresaJpaController(EntityManager manager) {
            else
            { 
                empRetEmpresa= em.merge(emp);}
+           em.getTransaction().commit();
          } catch (Exception ex) {
+             em.getTransaction().rollback();
              System.out.println(ex.getMessage());
              throw ex;
              

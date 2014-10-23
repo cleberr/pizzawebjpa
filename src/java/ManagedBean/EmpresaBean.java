@@ -63,6 +63,9 @@ public class EmpresaBean implements Serializable {
     public void novaEmp() {
         this.emp = new Empresa();
         this.localidadeEmp = new Localidades();
+        this.configRua= new EmpresaConfigRua();
+        this.configKM= new EmpresaConfigKM();
+        this.telefone= new TelefoneEmpresa();
     }
 
     public void pesqEmpresas() {
