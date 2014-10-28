@@ -7,6 +7,8 @@
 package Entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -33,18 +37,20 @@ public class Sangria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_SANGRIA")
+    @Column(name = "ID_SANGRIA", length = 5)
     private Integer idSangria;
-    @Column(name = "ID_CAIXA")
+    @Column(name = "ID_CAIXA", length = 5)
     private String idCaixa;
-    @Column(name = "ID_USUARIO")
+    @Column(name = "ID_USUARIO", length =5)
     private String idUsuario;
     @Column(name = "DATA_EVENTO")
     private String dataEvento;
-    @Column(name = "VALOR")
-    private String valor;
+    @Column(name = "VALOR", columnDefinition = "Decimal (10,2)")
+    private BigDecimal valor;
     @Column(name = "DATA_BAIXA")
-    private String dataBaixa;
+    @Temporal(TemporalType.DATE)
+    private Date dataBaixa;
+        
 
     public Sangria() {
     }
@@ -85,19 +91,19 @@ public class Sangria implements Serializable {
         this.dataEvento = dataEvento;
     }
 
-    public String getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
-    public String getDataBaixa() {
+    public Date getDataBaixa() {
         return dataBaixa;
     }
 
-    public void setDataBaixa(String dataBaixa) {
+    public void setDataBaixa(Date dataBaixa) {
         this.dataBaixa = dataBaixa;
     }
 

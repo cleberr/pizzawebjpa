@@ -40,7 +40,7 @@
                             <h:outputText  value="Cep"/>
                             <p:inputText value="#{empresaBean.emp.enderecoEmpresa.complemento}" style="width:400px"/>
                             <h:panelGroup>
-                                <p:inputMask mask="99999-999" value="#{empresaBean.localidadeEmp.cep}" style="width:80px"/>
+                                <p:inputMask mask="99999999" value="#{empresaBean.localidadeEmp.cep}" style="width:80px"/>
                                 <p:commandButton title="Pesquisar por CEP" icon="ui-icon-search" update="gridLocalidade,growl" oncomplete="PF('localidadeDIalog').show()" ajax="true" actionListener="#{empresaBean.pesqLocalidadePorCep()}" style="margin-left: 5px;height: 25px"/>
                             </h:panelGroup>
                             <h:outputText  value="Bairro"/>

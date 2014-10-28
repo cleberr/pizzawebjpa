@@ -18,10 +18,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class ProdutoComposicaoPK implements Serializable {
     @GeneratedValue
-    @Column(name = "ID_PRODUTO")
+    @Column(name = "ID_PRODUTO", length = 5)
     private int idProduto;
     @GeneratedValue
-    @Column(name = "ID_MATERIA_PRIMA")
+    @Column(name = "ID_MATERIA_PRIMA", length = 5)
     private int idMateriaPrima;
 
     public ProdutoComposicaoPK() {

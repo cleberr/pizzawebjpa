@@ -39,9 +39,9 @@ public class Caixa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_CAIXA")
+    @Column(name = "ID_CAIXA", length = 5)
     private Integer idCaixa;
-    @Column(name = "ID_USUARIO_ABERTURA")
+    @Column(name = "ID_USUARIO_ABERTURA", length = 5)
     private Integer idUsuarioAbertura;
     @Column(name = "DATA_ABERTURA")
     @Temporal(TemporalType.DATE)
@@ -50,11 +50,11 @@ public class Caixa implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataFechamento;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "SALDO_INICIAL")
+    @Column(name = "SALDO_INICIAL", columnDefinition = "Decimal (10,2)")
     private BigDecimal saldoInicial;
-    @Column(name = "SALDO_FINAL")
+    @Column(name = "SALDO_FINAL", columnDefinition = "Decimal (10,2)")
     private BigDecimal saldoFinal;
-    @Column(name = "ID_USUARIO_FECHAMENTO")
+    @Column(name = "ID_USUARIO_FECHAMENTO", length = 5)
     private Integer idUsuarioFechamento;
 
     public Caixa() {

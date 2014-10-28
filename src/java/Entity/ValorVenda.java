@@ -39,7 +39,7 @@ import javax.persistence.TemporalType;
 public class ValorVenda implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "VALOR")
+    @Column(name = "VALOR", columnDefinition = "Decimal (10,2)")
     private BigDecimal valor;
     @Column(name = "DATA_VIGENCIA")
     @Temporal(TemporalType.DATE)
@@ -47,7 +47,7 @@ public class ValorVenda implements Serializable {
     @Column(name = "DATA_VIGENCIA_FINAL")
     @Temporal(TemporalType.DATE)
     private Date dataVigenciaFinal;
-    @Column(name = "ID_USUARIO_CADASTRO")
+    @Column(name = "ID_USUARIO_CADASTRO", length = 5)
     private Integer idUsuarioCadastro;
     @Id
     @GeneratedValue

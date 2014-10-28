@@ -29,7 +29,7 @@ public class UnidadeMedida implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected UnidadeMedidaPK unidadeMedidaPK;
-    @Column(name = "DESCRICAO")
+    @Column(name = "DESCRICAO", length = 100)
     private String descricao;
 
     public UnidadeMedida() {

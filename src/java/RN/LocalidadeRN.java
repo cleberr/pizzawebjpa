@@ -17,17 +17,17 @@ import util.CepWebService;
  * @author cleber
  */
 public class LocalidadeRN {
-    private EntityManager em = null;
-    public LocalidadeRN(EntityManager em)
+  
+    public LocalidadeRN()
     {
-        this.em=em;
+    
     }
 
     
     public List<Localidades> pesqLocalidadeCEP(String cep)
     {
         List<Localidades> list=null;
-       LocalidadeJpaController jpaController= new LocalidadeJpaController(this.em);
+       LocalidadeJpaController jpaController= new LocalidadeJpaController();
        list= jpaController.pesqLocalidadeCEP(cep);
        if (list.size()==0)
        {
@@ -48,13 +48,13 @@ public class LocalidadeRN {
     
    public List<Localidades> pesqLocalidadeRua(String rua)
     {
-       LocalidadeJpaController jpaController= new LocalidadeJpaController(this.em);
+       LocalidadeJpaController jpaController= new LocalidadeJpaController();
        return jpaController.pesqLocalidadeRua(rua);
       
     }
    public List<Localidades> pesqLocalidadeBairro(String bairro)
     {
-       LocalidadeJpaController jpaController= new LocalidadeJpaController(this.em);
+       LocalidadeJpaController jpaController= new LocalidadeJpaController();
        return jpaController.pesqLocalidadeBairro(bairro);
       
     }

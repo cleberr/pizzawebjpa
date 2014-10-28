@@ -34,15 +34,15 @@ public class Endereco implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_ENDERECO")
+    @Column(name = "ID_ENDERECO", length = 5)
     private Integer idEndereco;
-    @Column(name = "LOGRADOURO")
+    @Column(name = "LOGRADOURO", length = 100)
     private String logradouro;
-    @Column(name = "REFERENCIA")
+    @Column(name = "REFERENCIA", length = 50)
     private String referencia;
-    @Column(name = "NUMERO")
+    @Column(name = "NUMERO", length = 5)
     private Integer numero;
-    @Column(name = "ID_BAIRRO")
+    @Column(name = "ID_BAIRRO", length = 5)
     private Integer idBairro;
     @JoinColumn(name = "ID_PESSOA", referencedColumnName = "ID_PESSOA")
     @ManyToOne

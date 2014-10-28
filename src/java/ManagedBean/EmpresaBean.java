@@ -50,7 +50,7 @@ public class EmpresaBean implements Serializable {
     }
 
     public void gravarEmp() {
-        EmpresaJpaController ejc = new EmpresaJpaController(getEntityManager());
+        EmpresaJpaController ejc = new EmpresaJpaController();
         try {
             ejc.gravarEmpresa(emp);
             addMessage("Registro Gravado.");
@@ -70,7 +70,7 @@ public class EmpresaBean implements Serializable {
 
     public void pesqEmpresas() {
         if (!"".equals(emp.getNome())) {
-            EmpresaJpaController ejc = new EmpresaJpaController(getEntityManager());
+            EmpresaJpaController ejc = new EmpresaJpaController();
         empresas = ejc.pesqEmpresa(emp.getNome());
         } else {
             empresas=null;

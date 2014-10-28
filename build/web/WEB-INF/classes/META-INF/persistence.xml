@@ -34,11 +34,11 @@
     <class>Entity.Cliente</class>
     <class>Entity.Caixa</class>
     <class>Entity.Funcionalidade</class>
-    <class>Entity.Bairro</class>
     <class>Entity.Empresa</class>
     <class>Entity.TipoPagamento</class>
     <class>Entity.Banco</class>
     <class>Entity.ItemPedido</class>
+    <class>Entity.TipoProduto</class>
     
    <properties>
            	<property name="hibernate.hbm2ddl.auto" value="update"/>

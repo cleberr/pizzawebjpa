@@ -35,16 +35,16 @@ public class ItemPedido implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_PEDIDO_ITEM")
+    @Column(name = "ID_PEDIDO_ITEM", length = 5)
     private Integer idPedidoItem;
-    @Column(name = "ID_PRODUTO")
+    @Column(name = "ID_PRODUTO", length = 5)
     private Integer idProduto;
-    @Column(name = "QUANTIDADE")
-    private Integer quantidade;
+    @Column(name = "QUANTIDADE", columnDefinition = "Decimal (10,2)")
+    private BigDecimal quantidade;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "VALOR_UNITARIO")
+    @Column(name = "VALOR_UNITARIO", columnDefinition = "Decimal (10,2)")
     private BigDecimal valorUnitario;
-    @Column(name = "ID_PRODUTO2")
+    @Column(name = "ID_PRODUTO2", length = 5)
     private Integer idProduto2;
     @JoinColumn(name = "ID_PEDIDO", referencedColumnName = "ID_PEDIDO")
     @ManyToOne
@@ -73,11 +73,11 @@ public class ItemPedido implements Serializable {
         this.idProduto = idProduto;
     }
 
-    public Integer getQuantidade() {
+    public BigDecimal getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(BigDecimal quantidade) {
         this.quantidade = quantidade;
     }
 

@@ -38,14 +38,14 @@ public class Fornecedor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "IF_FORNECEDOR")
+    @Column(name = "IF_FORNECEDOR", length = 5)
     private Integer ifFornecedor;
-    @Column(name = "NOME_FANTASIA")
+    @Column(name = "NOME_FANTASIA", length = 100)
     private String nomeFantasia;
     @Column(name = "DATA_CADASTRO")
     @Temporal(TemporalType.DATE)
     private Date dataCadastro;
-    @Column(name = "CNPJ")
+    @Column(name = "CNPJ", length = 14)
     private String cnpj;
     @JoinColumn(name = "ID_EMPRESA", referencedColumnName = "ID_EMPRESA")
     @ManyToOne

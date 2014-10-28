@@ -31,13 +31,13 @@ public class PerfilFuncionalidade implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_FUNCIONALIDADE")
+    @Column(name = "ID_FUNCIONALIDADE", length = 5)
     private Integer idFuncionalidade;
-    @Column(name = "ID_FUNCAO")
+    @Column(name = "ID_FUNCAO", length = 5)
     private Integer idFuncao;
-    @Column(name = "ID_PERFIL")
+    @Column(name = "ID_PERFIL", length = 5)
     private Integer idPerfil;
-    @Column(name = "ATIVO")
+    @Column(name = "ATIVO", length = 1)
     private Character ativo;
 
     public PerfilFuncionalidade() {

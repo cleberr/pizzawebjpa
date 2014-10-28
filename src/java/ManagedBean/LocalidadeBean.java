@@ -31,7 +31,7 @@ public class LocalidadeBean implements Serializable {
     private Localidades localidade = new Localidades();
 
     public void pesqLocalidadePorCEP(String cep) {
-        LocalidadeRN localidadeRN = new LocalidadeRN(getEntityManager());
+        LocalidadeRN localidadeRN = new LocalidadeRN();
         this.listLocalidades= null;
         this.listLocalidades = localidadeRN.pesqLocalidadeCEP(cep);
         if(!getListLocalidades().isEmpty())
@@ -42,7 +42,7 @@ public class LocalidadeBean implements Serializable {
     }
 
     public void pesqLocalidadePorRua(String rua) {
-        LocalidadeRN localidadeRN = new LocalidadeRN(getEntityManager());
+        LocalidadeRN localidadeRN = new LocalidadeRN();
         this.listLocalidades= null;
         this.listLocalidades = localidadeRN.pesqLocalidadeRua(rua);
         if(!getListLocalidades().isEmpty())
@@ -53,7 +53,7 @@ public class LocalidadeBean implements Serializable {
     }
     
     public void pesqLocalidadePorBairro(String bairro) {
-        LocalidadeRN localidadeRN = new LocalidadeRN(getEntityManager());
+        LocalidadeRN localidadeRN = new LocalidadeRN();
         this.listLocalidades= null;
         this.listLocalidades = localidadeRN.pesqLocalidadeBairro(bairro);
         if(!getListLocalidades().isEmpty())
@@ -62,14 +62,7 @@ public class LocalidadeBean implements Serializable {
         }
         else{this.ativo=false;}
     }
-    private EntityManager getEntityManager() {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        ExternalContext ec = fc.getExternalContext();
-        HttpServletRequest request = (HttpServletRequest) ec.getRequest();
-        EntityManager manager = (EntityManager) request.getAttribute("EntityManager");
-
-        return manager;
-    }
+   
     public void localidadeSelecionado(Localidades l)
   {
       this.localidade=l;

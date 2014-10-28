@@ -6,7 +6,9 @@
 package RN;
 
 import DAO.ProdutoJpaController;
+import DAO.TipoProdutoJpaController;
 import Entity.Produto;
+import Entity.TipoProduto;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -35,5 +37,17 @@ public class ProdutosRN {
       ProdutoJpaController jpaController= new ProdutoJpaController();
       return jpaController.gravarProduto(produto);
     }
+
+    public Produto pesqProdutosCodigo(Integer codigo) {
+     ProdutoJpaController jpaController= new ProdutoJpaController();
+      return jpaController.ProdutosCodigo(codigo);
+    }
     
+    
+     public List<TipoProduto> pesqTipoDeProdutos()
+    {
+        TipoProdutoJpaController jpaController= new TipoProdutoJpaController();
+        return jpaController.pesqTipoDeProduto();
+      
+    }
 }

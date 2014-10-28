@@ -40,9 +40,9 @@ public class Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_PESSOA")
+    @Column(name = "ID_PESSOA", length = 5)
     private Integer idPessoa;
-    @Column(name = "ATIVO")
+    @Column(name = "ATIVO", length = 1)
     private Character ativo;
     @Column(name = "DATA_DEMISSAO")
     @Temporal(TemporalType.DATE)
@@ -50,12 +50,12 @@ public class Funcionario implements Serializable {
     @Column(name = "DATA_ADMISSAO")
     @Temporal(TemporalType.DATE)
     private Date dataAdmissao;
-    @Column(name = "RG")
+    @Column(name = "RG", length = 12)
     private String rg;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "VR")
+    @Column(name = "VR", columnDefinition = "Decimal (10,2)")
     private BigDecimal vr;
-    @Column(name = "VT")
+    @Column(name = "VT", columnDefinition = "Decimal (10,2)")
     private BigDecimal vt;
     @OneToMany(mappedBy = "idUsuarioCadastro")
     private List<Pessoa> pessoaList;

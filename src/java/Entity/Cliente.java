@@ -39,11 +39,11 @@ public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_CLIENTE")
+    @Column(name = "ID_CLIENTE", length = 5)
     private Integer idCliente;
-    @Column(name = "ID_USUARIO_CADASTRO")
+    @Column(name = "ID_USUARIO_CADASTRO", length = 5)
     private Integer idUsuarioCadastro;
-    @Column(name = "OBSERVACAO")
+    @Column(name = "OBSERVACAO", length = 100)
     private String observacao;
     @Column(name = "DATA_CADASTRO")
     @Temporal(TemporalType.DATE)

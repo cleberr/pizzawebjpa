@@ -31,9 +31,9 @@ public class TipoPessoa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_TIPO_PESSOA")
+    @Column(name = "ID_TIPO_PESSOA", length = 5)
     private Integer idTipoPessoa;
-    @Column(name = "TIPO")
+    @Column(name = "TIPO", length = 50)
     private String tipo;
     @OneToMany(mappedBy = "idTipo")
     private List<Pessoa> pessoaList;

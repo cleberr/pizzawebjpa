@@ -40,22 +40,22 @@ public class ContasPagar implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_CONTA_PAGAR")
+    @Column(name = "ID_CONTA_PAGAR", length = 5)
     private Integer idContaPagar;
-    @Column(name = "ID_FORNECEDOR")
+    @Column(name = "ID_FORNECEDOR", length = 5)
     private Integer idFornecedor;
     @Column(name = "DATA_AGENDAMENTO")
     @Temporal(TemporalType.DATE)
     private Date dataAgendamento;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "VALOR_PAGO")
+    @Column(name = "VALOR_PAGO", columnDefinition = "Decimal (10,2)")
     private BigDecimal valorPago;
     @Column(name = "DATA_PAGAMENTO")
     @Temporal(TemporalType.DATE)
     private Date dataPagamento;
-    @Column(name = "PARCELA")
-    private String parcela;
-    @Column(name = "VALOR_AGENDAMENTO")
+    @Column(name = "PARCELA", length = 2)
+    private Integer parcela;
+    @Column(name = "VALOR_AGENDAMENTO", columnDefinition = "Decimal (10,2)")
     private BigDecimal valorAgendamento;
     @JoinColumn(name = "ID_COMPRA", referencedColumnName = "ID_COMPRA")
     @ManyToOne
@@ -108,11 +108,11 @@ public class ContasPagar implements Serializable {
         this.dataPagamento = dataPagamento;
     }
 
-    public String getParcela() {
+    public Integer getParcela() {
         return parcela;
     }
 
-    public void setParcela(String parcela) {
+    public void setParcela(Integer parcela) {
         this.parcela = parcela;
     }
 

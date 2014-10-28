@@ -37,12 +37,12 @@ public class CompraProdutos implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_COMPRA_PRODUTO")
+    @Column(name = "ID_COMPRA_PRODUTO", length = 5)
     private Integer idCompraProduto;
-    @Column(name = "QUANTIDADE")
-    private Integer quantidade;
+    @Column(name = "QUANTIDADE", columnDefinition = "Decimal(10,2)")
+    private BigDecimal quantidade;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "VALOR_UNITARIO")
+    @Column(name = "VALOR_UNITARIO", columnDefinition = "Decimal (10,2)")
     private BigDecimal valorUnitario;
     @Column(name = "VALIDADE")
     @Temporal(TemporalType.DATE)
@@ -69,11 +69,11 @@ public class CompraProdutos implements Serializable {
         this.idCompraProduto = idCompraProduto;
     }
 
-    public Integer getQuantidade() {
+    public BigDecimal getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(BigDecimal quantidade) {
         this.quantidade = quantidade;
     }
 

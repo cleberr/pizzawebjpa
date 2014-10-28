@@ -18,10 +18,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class UnidadeMedidaPK implements Serializable {
     @GeneratedValue
-    @Column(name = "ID_UNIDADE")
+    @Column(name = "ID_UNIDADE", length = 5)
     private int idUnidade;
     @GeneratedValue
-    @Column(name = "COD_UNIDADE_MEDIDA")
+    @Column(name = "COD_UNIDADE_MEDIDA", length = 10)
     private String codUnidadeMedida;
 
     public UnidadeMedidaPK() {

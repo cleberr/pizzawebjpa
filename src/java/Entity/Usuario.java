@@ -38,15 +38,15 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_USUARIO")
+    @Column(name = "ID_USUARIO", length = 5)
     private Integer idUsuario;
-    @Column(name = "ATIVO")
+    @Column(name = "ATIVO", length = 1)
     private Character ativo;
-    @Column(name = "LOGIN")
+    @Column(name = "LOGIN", length = 10)
     private String login;
-    @Column(name = "SENHA")
+    @Column(name = "SENHA", length = 12)
     private String senha;
-    @Column(name = "MUDAR_SENHA")
+    @Column(name = "MUDAR_SENHA", length = 1)
     private Character mudarSenha;
     @JoinColumn(name = "ID_PERFIL", referencedColumnName = "ID_PERFIL")
     @ManyToOne

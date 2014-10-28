@@ -21,15 +21,27 @@ and open the template in the editor.
                     <p:panel styleClass="tirarBorda">
 
                         <h:outputText  value="Código   " />
-                         <h:panelGroup>
-                        <p:inputText   value="#{produtosBean.produto.idProduto}" style="width:80px;margin-right: 2px;background-color:#57B2CC;color: white"/>
-                        <p:commandButton icon="ui-icon-search" update="dataListProdutos" oncomplete="PF('ListaProdutosDIalog').show()" id="btPesqcod"  actionListener="#{produtosBean.pesqProduto()}"/>
+                        <h:panelGroup>
+                            <p:inputText   value="#{produtosBean.codigo}" style="width:80px;margin-right: 2px;background-color:#57B2CC;color: white"/>
+                            <p:commandButton icon="ui-icon-search" update="growl" id="btPesqcod"  actionListener="#{produtosBean.pesqProdutoCodigo()}"/>
                         </h:panelGroup>
                         <h:outputText  value=" Nome    "/>
                         <h:panelGroup>
                             <p:inputText value="#{produtosBean.produto.nome}" style="width:450px;margin-right: 2px;background-color:#57B2CC;color: white"/>
-                            <p:commandButton icon="ui-icon-search" update="dataListProdutos" oncomplete="PF('ListaProdutosDIalog').show()" id="btPesqNome"  actionListener="#{produtosBean.pesqProduto()}" ajax="true"/>
+                            <p:commandButton icon="ui-icon-search" update="dataListProdutos, growl" oncomplete="PF('ListaProdutosDIalog').show()" id="btPesqNome"  actionListener="#{produtosBean.pesqProduto()}" ajax="true"/>
                         </h:panelGroup>
+
+                        <h:outputText  value=" Nome    "/>
+                        <p:selectOneMenu  value="#{produtosBean.produto.tipoProduto}" >
+                            <f:selectItem itemLabel="Select One" itemValue="" />  
+                            <f:selectItems value="#{produtosBean.listTipoProdutos}"  
+                                           var="tipo"  
+                                           itemLabel="#{tipo.descricao}"  
+                                           itemValue="#{tipo}"/>  
+                            
+                        </p:selectOneMenu>
+
+
                         <h:outputText  value=" Medida    "/>
                         <p:inputText value="#{produtosBean.produto.idUnidade}" style="width:30px;margin-right: 20px"/>
                         <p:selectOneMenu  value="#{produtosBean.produto.idUnidade}" >
@@ -53,17 +65,12 @@ and open the template in the editor.
                         <!--ENTIDADE DE VALOR DE VENDA? --><p:inputText value="#{produtosBean.produto.produtoVenda}" style="width:80px;margin-right: 20px"/>
                         <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                             <h:outputText value="Tipo de Produto" />
-                            <p:selectOneRadio  id="tipoProduto" value="#{produtosBean.produto.idTipo}" >
-                                <f:selectItem  itemLabel="Pradão" itemValue="1" />
-                                <f:selectItem itemLabel="Matéria Prima" itemValue="2" />
-                                <f:selectItem itemLabel="Contém Matéria Prima" itemValue="3" />
-                                <f:ajax render="blocoDeInformacoesExtras"/>
-                            </p:selectOneRadio>
+                         
                         </h:panelGrid>
                     </p:panel>
                     <br></br>
                     <h:panelGroup id="blocoDeInformacoesExtras" >
-                        <p:panel style="width: 85%" rendered="${produtosBean.produto.idTipo==2}">
+                        <p:panel style="width: 85%" rendered="${produtosBean.produto.idUnidade==2}">
                             <h:outputText  value="Código   " />
                             <p:inputText  value="#{produtosBean.produto.idProduto}" style="width:80px;margin-right: 20px;background-color:#57B2CC;color: white"/>
                             <h:outputText  value=" Nome    "/>
@@ -89,16 +96,19 @@ and open the template in the editor.
                             <p:column headerText="Quantidade">
                                 <!--precisa de quantidade --> <h:outputText value="#{produtos.quantidadeEmbalagem}" />
                             </p:column>
-
+                            <p:column headerText="Selecionar">
+                                <p:commandButton icon="ui-icon-check"  oncomplete="PF('ListaProdutosDIalog').hide()" actionListener="#{produtosBean.produtoSelecionado(produtos)}" ajax="false" />
+                            </p:column>
                         </p:dataTable>
                     </p:dialog>
                     <br></br>
                     <br></br>
-                    <h:panelGroup style="padding-left: 77%">
-                        <p:commandButton value="Gravar" actionListener="#{produtosBean.gravarProduto()}"></p:commandButton>
-                        <p:commandButton update="dataListProdutos" oncomplete="PF(ListaProdutosDIalog).show" id="btNovo" value="Novo" actionListener="#{produtosBean.novoCadastro()}"></p:commandButton>
-                    </h:panelGroup>
+                   
                 </p:panel>
+                 <h:panelGroup style="padding-left: 77%">
+                        <p:commandButton ajax="false" update="growl" value="Gravar" actionListener="#{produtosBean.gravarProduto()}"></p:commandButton>
+                        <p:commandButton ajax="false" id="btNovo" value="Novo" actionListener="#{produtosBean.novoCadastro()}"></p:commandButton>
+                    </h:panelGroup>
             </h:form>
         </ui:define>
     </ui:composition>

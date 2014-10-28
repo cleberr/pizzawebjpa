@@ -32,11 +32,11 @@ public class TelefonePessoa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_TELEFONE")
+    @Column(name = "ID_TELEFONE", length = 5)
     private Integer idTelefone;
-    @Column(name = "TELEFONE")
+    @Column(name = "TELEFONE", length = 9)
     private String telefone;
-    @Column(name = "DDD")
+    @Column(name = "DDD", length = 4)
     private String ddd;
     @JoinColumn(name = "ID_PESSOA", referencedColumnName = "ID_PESSOA")
     @ManyToOne

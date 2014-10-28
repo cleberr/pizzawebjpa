@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package DAO;
 
 import java.io.Serializable;
@@ -27,40 +26,50 @@ import util.EntityManagerUtil;
  * @author cleber
  */
 public class ProdutoJpaController implements Serializable {
-    private EntityManager em=null;
+
+    private EntityManager em = null;
+
     public ProdutoJpaController() {
         this.em = EntityManagerUtil.getEntityManager();
     }
-    
-    public  List<Produto> pesqProdutos(String nomeProduto)
-    {
-     Query query = em.createQuery("select p from Produto p where p.nome like :nome and p.ativo='S' ORDER BY p.nome", Produto.class);
-         query.setParameter("nome",nomeProduto+"%");
-         return query.getResultList();  
-        
+
+    public List<Produto> pesqProdutos(String nomeProduto) {
+        Query query = em.createQuery("select p from Produto p where p.nome like :nome and p.ativo='S' ORDER BY p.nome", Produto.class);
+        query.setParameter("nome", nomeProduto + "%");
+        return query.getResultList();
+
     }
-    
-    public Produto gravarProduto(Produto p)
-    {
-        Produto produtoRetorno= null;
-     try {
-         em.getTransaction().begin();
-           if ((p.getIdProduto()==null) ||(p.getIdProduto()==0)){
-              em.persist(p);
-            
-           }
-           else
-           { 
-              produtoRetorno= em.merge(p);}
-           em.getTransaction().commit();
-         } catch (Exception ex) {
-             em.getTransaction().rollback();
+
+    public Produto gravarProduto(Produto p) {
+        Produto produtoRetorno = null;
+        try {
+            em.getTransaction().begin();
+            if ((p.getIdProduto() == null) || (p.getIdProduto() == 0)) {
+                em.persist(p);
+
+            } else {
+                produtoRetorno = em.merge(p);
+            }
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            em.getTransaction().rollback();
             throw ex;
-             
-            
-        } 
+
+        }
         return produtoRetorno;
-        
+
     }
-    
+
+    public Produto ProdutosCodigo(Integer codigo) {
+        Query query = em.createQuery("select p from Produto p where p.idProduto= :id and p.ativo='S'", Produto.class);
+        query.setParameter("id", codigo);
+        List<Produto> list;
+        list = query.getResultList();
+        if (list.size() == 1) {
+            return list.get(0);
+        } else {
+            return null;
+        }
+    }
+
 }

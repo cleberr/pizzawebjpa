@@ -35,10 +35,10 @@ public class Entregador implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_ENTREGADOR")
+    @Column(name = "ID_ENTREGADOR", length = 5)
     private Integer idEntregador;
-    @Column(name = "CNH")
-    private String cnh;
+    @Column(name = "CNH", length = 11)
+    private Integer cnh;
     @Column(name = "DATA_ADMISSAO")
     @Temporal(TemporalType.DATE)
     private Date dataAdmissao;
@@ -61,11 +61,11 @@ public class Entregador implements Serializable {
         this.idEntregador = idEntregador;
     }
 
-    public String getCnh() {
+    public Integer getCnh() {
         return cnh;
     }
 
-    public void setCnh(String cnh) {
+    public void setCnh(Integer cnh) {
         this.cnh = cnh;
     }
 

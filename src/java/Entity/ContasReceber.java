@@ -33,12 +33,12 @@ public class ContasReceber implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_CONTA_RECEBER")
+    @Column(name = "ID_CONTA_RECEBER", length = 5)
     private Integer idContaReceber;
-    @Column(name = "ID_USUARIO")
+    @Column(name = "ID_USUARIO", length = 5)
     private Integer idUsuario;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "VALOR_TOTAL")
+    @Column(name = "VALOR_TOTAL", columnDefinition = "Decimal (10,2)")
     private BigDecimal valorTotal;
     @JoinColumn(name = "ID_PEDIDO", referencedColumnName = "ID_PEDIDO")
     @ManyToOne

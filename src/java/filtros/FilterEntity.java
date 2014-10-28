@@ -34,19 +34,21 @@ public class FilterEntity implements Filter {
             throws IOException, ServletException {
         // inicia a transação antes de processar o request
         EntityManager em = EntityManagerUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
+      //  EntityTransaction tx = em.getTransaction();
         try {
-            tx.begin();
+           // tx.begin();
             // processa a requisição
             chain.doFilter(request, response);
             // faz commit
-            tx.commit();
+           // tx.commit();
         } catch (Exception e) { // ou em caso de erro faz o rollback
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
+            
+           // if (tx != null && tx.isActive()) {
+             //   tx.rollback();
+            System.out.println(e.getMessage());
+            
         } finally {
-            em.close();
+          //  em.close();
         }
     }
 

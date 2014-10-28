@@ -19,7 +19,7 @@ import util.EntityManagerUtil;
  */
 public class EmpresaJpaController implements Serializable {
     private EntityManager em = null;
-public EmpresaJpaController(EntityManager manager) {
+public EmpresaJpaController() {
         this.em= EntityManagerUtil.getEntityManager(); // = manager;
     }
     
@@ -28,16 +28,18 @@ public EmpresaJpaController(EntityManager manager) {
         try {
             em.getTransaction().begin();
            if ((emp.getIdEmpresa()==null) ||(emp.getIdEmpresa()==0)){
-               System.out.println(emp.getTelefoneEmpresaList().size());
-               if (emp.getTelefoneEmpresaList().size()==0)
+              if (emp.getTelefoneEmpresaList().size()==0)
                   emp.setTelefoneEmpresaList(null);
               em.persist(emp);
-            
+            em.getTransaction().commit();
            }
            else
            { 
-               empRetEmpresa= em.merge(emp);}
-           em.getTransaction().commit();
+               empRetEmpresa= em.merge(emp);
+               em.getTransaction().commit();
+           
+           }
+           
          } catch (Exception ex) {
              em.getTransaction().rollback();
              System.out.println(ex.getMessage());

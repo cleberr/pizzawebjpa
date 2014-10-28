@@ -32,11 +32,11 @@ public class Perfil implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_PERFIL")
+    @Column(name = "ID_PERFIL", length = 5)
     private Integer idPerfil;
-    @Column(name = "DESCRICAO")
+    @Column(name = "DESCRICAO", length = 5)
     private String descricao;
-    @Column(name = "ATIVO")
+    @Column(name = "ATIVO", length = 1)
     private Character ativo;
     @OneToMany(mappedBy = "idPerfil")
     private List<Usuario> usuarioList;

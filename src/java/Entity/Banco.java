@@ -32,9 +32,9 @@ public class Banco implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_BANCO")
+    @Column(name = "ID_BANCO", length = 5)
     private Integer idBanco;
-    @Column(name = "NOME")
+    @Column(name = "NOME", length = 100)
     private String nome;
     @OneToMany(mappedBy = "idBanco")
     private List<Conta> contaList;

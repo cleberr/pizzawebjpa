@@ -34,14 +34,14 @@ public class Conta implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_CONTA")
+    @Column(name = "ID_CONTA", length = 5)
     private Integer idConta;
-    @Column(name = "ID_EMPRESA")
+    @Column(name = "ID_EMPRESA", length = 5)
     private Integer idEmpresa;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "SALDO")
+    @Column(name = "SALDO", columnDefinition = "Decimal (10,2)")
     private BigDecimal saldo;
-    @Column(name = "DESCRICAO_CONTA")
+    @Column(name = "DESCRICAO_CONTA", length = 100)
     private String descricaoConta;
     @JoinColumn(name = "ID_BANCO", referencedColumnName = "ID_BANCO")
     @ManyToOne

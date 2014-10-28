@@ -5,7 +5,6 @@
  */
 
 package Entity;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,10 +12,12 @@ import java.util.List;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,42 +28,22 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "produto")
-@NamedQueries({
-    @NamedQuery(name = "Produto.findAll", query = "SELECT p FROM Produto p"),
-    @NamedQuery(name = "Produto.findByIdProduto", query = "SELECT p FROM Produto p WHERE p.idProduto = :idProduto"),
-    @NamedQuery(name = "Produto.findByNome", query = "SELECT p FROM Produto p WHERE p.nome = :nome"),
-    @NamedQuery(name = "Produto.findByDescricao", query = "SELECT p FROM Produto p WHERE p.descricao = :descricao"),
-    @NamedQuery(name = "Produto.findByAtivo", query = "SELECT p FROM Produto p WHERE p.ativo = :ativo"),
-    @NamedQuery(name = "Produto.findByMateriaPrima", query = "SELECT p FROM Produto p WHERE p.materiaPrima = :materiaPrima"),
-    @NamedQuery(name = "Produto.findByPermiteFracionar", query = "SELECT p FROM Produto p WHERE p.permiteFracionar = :permiteFracionar"),
-    @NamedQuery(name = "Produto.findByQuantidadeMinima", query = "SELECT p FROM Produto p WHERE p.quantidadeMinima = :quantidadeMinima"),
-    @NamedQuery(name = "Produto.findByQuantidadeMaxima", query = "SELECT p FROM Produto p WHERE p.quantidadeMaxima = :quantidadeMaxima"),
-    @NamedQuery(name = "Produto.findByProdutoVenda", query = "SELECT p FROM Produto p WHERE p.produtoVenda = :produtoVenda"),
-    @NamedQuery(name = "Produto.findByDataCadastro", query = "SELECT p FROM Produto p WHERE p.dataCadastro = :dataCadastro"),
-    @NamedQuery(name = "Produto.findByCodBarras", query = "SELECT p FROM Produto p WHERE p.codBarras = :codBarras"),
-    @NamedQuery(name = "Produto.findByIdUnidade", query = "SELECT p FROM Produto p WHERE p.idUnidade = :idUnidade"),
-    @NamedQuery(name = "Produto.findByIdUsuarioCadastro", query = "SELECT p FROM Produto p WHERE p.idUsuarioCadastro = :idUsuarioCadastro"),
-    @NamedQuery(name = "Produto.findByQuantidadeEmbalagem", query = "SELECT p FROM Produto p WHERE p.quantidadeEmbalagem = :quantidadeEmbalagem"),
-    @NamedQuery(name = "Produto.findByQuantidadeEstoque", query = "SELECT p FROM Produto p WHERE p.quantidadeEstoque = :quantidadeEstoque")})
+
 public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_PRODUTO")
+    @Column(name = "ID_PRODUTO", length = 5)
     private Integer idProduto;
-    @Column(name = "NOME")
+    @Column(name = "NOME", length = 100)
     private String nome;
-    @Column(name = "idempresa")
-    private Integer idempresa;
-    @Column(name = "padrao")
-    private Character padroa;
-    @Column(name = "DESCRICAO")
+    @Column(name = "DESCRICAO", length = 100)
     private String descricao;
-    @Column(name = "ATIVO")
+    @Column(name = "ATIVO", length = 1)
     private Character ativo;
-    @Column(name = "MATERIA_PRIMA")
+    @Column(name = "MATERIA_PRIMA", length = 1)
     private Character materiaPrima;
-    @Column(name = "PERMITE_FRACIONAR")
+    @Column(name = "PERMITE_FRACIONAR", length = 1)
     private Character permiteFracionar;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "QUANTIDADE_MINIMA")
@@ -78,25 +59,20 @@ public class Produto implements Serializable {
     private String codBarras;
     @Column(name = "ID_UNIDADE")
     private Integer idUnidade;
-    @Column(name = "ID_TIPO")
-    private Integer idTipo;
     @Column(name = "ID_USUARIO_CADASTRO")
     private Integer idUsuarioCadastro;
     @Column(name = "QUANTIDADE_EMBALAGEM")
     private BigDecimal quantidadeEmbalagem;
     @Column(name = "QUANTIDADE_ESTOQUE")
     private BigDecimal quantidadeEstoque;
+    @JoinColumn(name = "ID_TIPO_PRODUTO", referencedColumnName = "ID_TIPO_PRODUTO")
+    @ManyToOne
+    private TipoProduto tipoProduto;
+    
     @OneToMany(mappedBy = "idProduto")
     private List<ValorVenda> valorVendaList;
     @OneToMany(mappedBy = "idProduto")
     private List<CompraProdutos> compraProdutosList;
-
-    public Produto() {
-    }
-
-    public Produto(Integer idProduto) {
-        this.idProduto = idProduto;
-    }
 
     public Integer getIdProduto() {
         return idProduto;
@@ -218,6 +194,14 @@ public class Produto implements Serializable {
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+
     public List<ValorVenda> getValorVendaList() {
         return valorVendaList;
     }
@@ -233,55 +217,4 @@ public class Produto implements Serializable {
     public void setCompraProdutosList(List<CompraProdutos> compraProdutosList) {
         this.compraProdutosList = compraProdutosList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idProduto != null ? idProduto.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Produto)) {
-            return false;
-        }
-        Produto other = (Produto) object;
-        if ((this.idProduto == null && other.idProduto != null) || (this.idProduto != null && !this.idProduto.equals(other.idProduto))) {
-            return false;
-        }
-        return true;
-    }
-
-    public Integer getIdempresa() {
-        return idempresa;
-    }
-
-    public void setIdempresa(Integer idempresa) {
-        this.idempresa = idempresa;
-    }
-
-    public Character getPadroa() {
-        return padroa;
-    }
-
-    public void setPadroa(Character padroa) {
-        this.padroa = padroa;
-    }
-
-    public Integer getIdTipo() {
-        return idTipo;
-    }
-
-    public void setIdTipo(Integer idTipo) {
-        this.idTipo = idTipo;
-    }
-
-    
-    @Override
-    public String toString() {
-        return "Entity.Produto[ idProduto=" + idProduto + " ]";
-    }
-    
 }

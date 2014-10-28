@@ -29,46 +29,34 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "pedido")
-@NamedQueries({
-    @NamedQuery(name = "Pedido.findAll", query = "SELECT p FROM Pedido p"),
-    @NamedQuery(name = "Pedido.findByIdPedido", query = "SELECT p FROM Pedido p WHERE p.idPedido = :idPedido"),
-    @NamedQuery(name = "Pedido.findByIdEndereco", query = "SELECT p FROM Pedido p WHERE p.idEndereco = :idEndereco"),
-    @NamedQuery(name = "Pedido.findByEntrega", query = "SELECT p FROM Pedido p WHERE p.entrega = :entrega"),
-    @NamedQuery(name = "Pedido.findByIdEntregador", query = "SELECT p FROM Pedido p WHERE p.idEntregador = :idEntregador"),
-    @NamedQuery(name = "Pedido.findByDataHoraPedido", query = "SELECT p FROM Pedido p WHERE p.dataHoraPedido = :dataHoraPedido"),
-    @NamedQuery(name = "Pedido.findByValorTaxaEntrega", query = "SELECT p FROM Pedido p WHERE p.valorTaxaEntrega = :valorTaxaEntrega"),
-    @NamedQuery(name = "Pedido.findByLevarTroco", query = "SELECT p FROM Pedido p WHERE p.levarTroco = :levarTroco"),
-    @NamedQuery(name = "Pedido.findByObservacao", query = "SELECT p FROM Pedido p WHERE p.observacao = :observacao"),
-    @NamedQuery(name = "Pedido.findByPago", query = "SELECT p FROM Pedido p WHERE p.pago = :pago"),
-    @NamedQuery(name = "Pedido.findByStatus", query = "SELECT p FROM Pedido p WHERE p.status = :status"),
-    @NamedQuery(name = "Pedido.findByPagamentoTaxa", query = "SELECT p FROM Pedido p WHERE p.pagamentoTaxa = :pagamentoTaxa"),
-    @NamedQuery(name = "Pedido.findByDataEventoTaxa", query = "SELECT p FROM Pedido p WHERE p.dataEventoTaxa = :dataEventoTaxa")})
 public class Pedido implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_PEDIDO")
+    @Column(name = "ID_PEDIDO", length = 5)
     private Integer idPedido;
-    @Column(name = "ID_ENDERECO")
+    @Column(name = "ID_ENDERECO", length = 5)
     private Integer idEndereco;
-    @Column(name = "ENTREGA")
+    @Column(name = "ENTREGA", length = 1)
     private Character entrega;
-    @Column(name = "ID_ENTREGADOR")
+    @Column(name = "ID_ENTREGADOR", length = 5)
     private Integer idEntregador;
+    @Temporal (TemporalType.TIMESTAMP)
     @Column(name = "DATA_HORA_PEDIDO")
-    private Character dataHoraPedido;
+    private Date dataHoraPedido;
+    
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "VALOR_TAXA_ENTREGA")
+    @Column(name = "VALOR_TAXA_ENTREGA", columnDefinition = "Decimal (10,2)")
     private BigDecimal valorTaxaEntrega;
-    @Column(name = "LEVAR_TROCO")
+    @Column(name = "LEVAR_TROCO", length = 1)
     private Character levarTroco;
-    @Column(name = "OBSERVACAO")
+    @Column(name = "OBSERVACAO", length = 100)
     private String observacao;
-    @Column(name = "PAGO")
+    @Column(name = "PAGO", length = 1)
     private Character pago;
-    @Column(name = "STATUS")
+    @Column(name = "STATUS", length = 15)
     private String status;
-    @Column(name = "PAGAMENTO_TAXA")
+    @Column(name = "PAGAMENTO_TAXA", length = 1)
     private Character pagamentoTaxa;
     @Column(name = "DATA_EVENTO_TAXA")
     @Temporal(TemporalType.DATE)
@@ -123,11 +111,11 @@ public class Pedido implements Serializable {
         this.idEntregador = idEntregador;
     }
 
-    public Character getDataHoraPedido() {
+    public Date getDataHoraPedido() {
         return dataHoraPedido;
     }
 
-    public void setDataHoraPedido(Character dataHoraPedido) {
+    public void setDataHoraPedido(Date dataHoraPedido) {
         this.dataHoraPedido = dataHoraPedido;
     }
 

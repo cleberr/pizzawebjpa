@@ -34,15 +34,15 @@ public class FormaPagamento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_FORMA_PAGAMENTO")
+    @Column(name = "ID_FORMA_PAGAMENTO", length = 5)
     private Integer idFormaPagamento;
-    @Column(name = "ATIVO")
+    @Column(name = "ATIVO", length = 1)
     private Character ativo;
-    @Column(name = "DESCRICAO")
+    @Column(name = "DESCRICAO", length = 100)
     private String descricao;
-    @Column(name = "CALC_TROCO")
+    @Column(name = "CALC_TROCO", length = 1)
     private Character calcTroco;
-    @Column(name = "ID_TIPO_PAGAMENTO")
+    @Column(name = "ID_TIPO_PAGAMENTO", length = 5)
     private Integer idTipoPagamento;
     @OneToMany(mappedBy = "idFormaPagamento")
     private List<ContasReceber> contasReceberList;

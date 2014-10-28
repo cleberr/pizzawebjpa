@@ -32,11 +32,11 @@ public class Funcionalidade implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_FUNCAO")
+    @Column(name = "ID_FUNCAO", length = 5)
     private Integer idFuncao;
-    @Column(name = "DESCRICAO")
+    @Column(name = "DESCRICAO", length = 100)
     private String descricao;
-    @Column(name = "ATIVO")
+    @Column(name = "ATIVO", length = 1)
     private Character ativo;
     @JoinColumn(name = "ID_PERFIL", referencedColumnName = "ID_PERFIL")
     @ManyToOne

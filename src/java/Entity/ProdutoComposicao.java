@@ -7,6 +7,7 @@
 package Entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -29,8 +30,8 @@ public class ProdutoComposicao implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ProdutoComposicaoPK produtoComposicaoPK;
-    @Column(name = "QUANTIDADE")
-    private Integer quantidade;
+    @Column(name = "QUANTIDADE", columnDefinition = "Decimal (10,2)")
+    private BigDecimal quantidade;
 
     public ProdutoComposicao() {
     }
@@ -51,11 +52,11 @@ public class ProdutoComposicao implements Serializable {
         this.produtoComposicaoPK = produtoComposicaoPK;
     }
 
-    public Integer getQuantidade() {
+    public BigDecimal getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(BigDecimal quantidade) {
         this.quantidade = quantidade;
     }
 

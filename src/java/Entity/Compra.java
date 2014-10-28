@@ -46,26 +46,26 @@ public class Compra implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_COMPRA")
+    @Column(name = "ID_COMPRA", length = 5)
     private Integer idCompra;
-    @Column(name = "MOTIVO_CANCELAMENTO")
+    @Column(name = "MOTIVO_CANCELAMENTO", length = 100)
     private String motivoCancelamento;
-    @Column(name = "QUANTIDADE_PARCELAS")
-    private String quantidadeParcelas;
-    @Column(name = "ATIVO")
+    @Column(name = "QUANTIDADE_PARCELAS", length = 2)
+    private Integer quantidadeParcelas;
+    @Column(name = "ATIVO", length = 1)
     private Character ativo;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "VALOR_TOTAL")
+    @Column(name = "VALOR_TOTAL", columnDefinition = "Decimal (10,2)")
     private BigDecimal valorTotal;
     @Column(name = "DATA_COMPRA")
     @Temporal(TemporalType.DATE)
     private Date dataCompra;
-    @Column(name = "ID_USER_CANCELAMENTO")
+    @Column(name = "ID_USER_CANCELAMENTO", length = 5)
     private Integer idUserCancelamento;
     @Column(name = "DATA_CANCELAMENTO")
     @Temporal(TemporalType.DATE)
     private Date dataCancelamento;
-    @Column(name = "NF")
+    @Column(name = "NF", length = 100)
     private String nf;
     @Column(name = "ID_USUARIO_COMPRA")
     private Integer idUsuarioCompra;
@@ -100,11 +100,11 @@ public class Compra implements Serializable {
         this.motivoCancelamento = motivoCancelamento;
     }
 
-    public String getQuantidadeParcelas() {
+    public Integer getQuantidadeParcelas() {
         return quantidadeParcelas;
     }
 
-    public void setQuantidadeParcelas(String quantidadeParcelas) {
+    public void setQuantidadeParcelas(Integer quantidadeParcelas) {
         this.quantidadeParcelas = quantidadeParcelas;
     }
 

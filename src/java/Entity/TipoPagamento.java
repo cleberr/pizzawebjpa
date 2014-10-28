@@ -21,24 +21,18 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tipo_pagamento")
-@NamedQueries({
-    @NamedQuery(name = "TipoPagamento.findAll", query = "SELECT t FROM TipoPagamento t"),
-    @NamedQuery(name = "TipoPagamento.findByIdTipoPagamento", query = "SELECT t FROM TipoPagamento t WHERE t.idTipoPagamento = :idTipoPagamento"),
-    @NamedQuery(name = "TipoPagamento.findByIdConta", query = "SELECT t FROM TipoPagamento t WHERE t.idConta = :idConta"),
-    @NamedQuery(name = "TipoPagamento.findByDescricao", query = "SELECT t FROM TipoPagamento t WHERE t.descricao = :descricao"),
-    @NamedQuery(name = "TipoPagamento.findByTempoCredito", query = "SELECT t FROM TipoPagamento t WHERE t.tempoCredito = :tempoCredito")})
 public class TipoPagamento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_TIPO_PAGAMENTO")
+    @Column(name = "ID_TIPO_PAGAMENTO", length = 5)
     private Integer idTipoPagamento;
-    @Column(name = "ID_CONTA")
+    @Column(name = "ID_CONTA", length = 5)
     private Integer idConta;
-    @Column(name = "DESCRICAO")
+    @Column(name = "DESCRICAO", length = 100)
     private String descricao;
-    @Column(name = "TEMPO_CREDITO")
-    private String tempoCredito;
+    @Column(name = "TEMPO_CREDITO", length = 2)
+    private Integer tempoCredito;
 
     public TipoPagamento() {
     }
@@ -71,11 +65,11 @@ public class TipoPagamento implements Serializable {
         this.descricao = descricao;
     }
 
-    public String getTempoCredito() {
+    public Integer getTempoCredito() {
         return tempoCredito;
     }
 
-    public void setTempoCredito(String tempoCredito) {
+    public void setTempoCredito(Integer tempoCredito) {
         this.tempoCredito = tempoCredito;
     }
 

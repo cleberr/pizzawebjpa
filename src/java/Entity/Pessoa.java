@@ -40,19 +40,19 @@ public class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "ID_PESSOA")
+    @Column(name = "ID_PESSOA", length = 5)
     private Integer idPessoa;
     @Column(name = "DATA_CADASTRO")
     @Temporal(TemporalType.DATE)
     private Date dataCadastro;
-    @Column(name = "NOME")
+    @Column(name = "NOME", length = 100)
     private String nome;
-    @Column(name = "SEXO")
+    @Column(name = "SEXO", length = 1)
     private Character sexo;
     @Column(name = "DATA_NASCIMENTO")
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
-    @Column(name = "CPF")
+    @Column(name = "CPF", length = 14)
     private String cpf;
     @OneToMany(mappedBy = "idPessoa")
     private List<TelefonePessoa> telefonePessoaList;
