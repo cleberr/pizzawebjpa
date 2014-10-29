@@ -48,7 +48,7 @@ public class Cliente implements Serializable {
     private List<Pedido> pedidoList;
     @JoinColumn(name = "ID_PESSOA", referencedColumnName = "ID_PESSOA")
     @OneToOne
-    private Pessoa idPessoa;
+    private Pessoa Pessoa;
 
     public Cliente() {
     }
@@ -97,12 +97,12 @@ public class Cliente implements Serializable {
         this.pedidoList = pedidoList;
     }
 
-    public Pessoa getIdPessoa() {
-        return idPessoa;
+    public Pessoa getPessoa() {
+        return Pessoa;
     }
 
-    public void setIdPessoa(Pessoa idPessoa) {
-        this.idPessoa = idPessoa;
+    public void setPessoa(Pessoa Pessoa) {
+        this.Pessoa = Pessoa;
     }
 
     @Override

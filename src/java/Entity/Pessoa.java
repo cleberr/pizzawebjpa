@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -62,8 +63,8 @@ public class Pessoa implements Serializable {
     @JoinColumn(name = "ID_TIPO", referencedColumnName = "ID_TIPO_PESSOA")
     @ManyToOne
     private TipoPessoa idTipo;
-    @OneToMany(mappedBy = "idPessoa")
-    private List<Cliente> clienteList;
+    @OneToOne(mappedBy = "idPessoa")
+    private Cliente cliente;
     @OneToMany(mappedBy = "idPessoa")
     private List<Entregador> entregadorList;
     @OneToMany(mappedBy = "idPessoa")
@@ -148,12 +149,12 @@ public class Pessoa implements Serializable {
         this.idTipo = idTipo;
     }
 
-    public List<Cliente> getClienteList() {
-        return clienteList;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setClienteList(List<Cliente> clienteList) {
-        this.clienteList = clienteList;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public List<Entregador> getEntregadorList() {
