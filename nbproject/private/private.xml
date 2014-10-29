@@ -3,11 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Dev/Projetos/projeto_fac/projetojsfjpa/pizzawebjpa/src/java/ManagedBean/EmpresaBean.java</file>
             <file>file:/C:/Dev/Projetos/projeto_fac/projetojsfjpa/pizzawebjpa/src/java/ManagedBean/ProtudosBean.java</file>
             <file>file:/C:/Dev/Projetos/projeto_fac/projetojsfjpa/pizzawebjpa/src/java/Entity/Produto.java</file>
+            <file>file:/C:/Dev/Projetos/projeto_fac/projetojsfjpa/pizzawebjpa/src/java/Entity/EmpresaConfigKM.java</file>
+            <file>file:/C:/Dev/Projetos/projeto_fac/projetojsfjpa/pizzawebjpa/src/java/Entity/Empresa.java</file>
+            <file>file:/C:/Dev/Projetos/projeto_fac/projetojsfjpa/pizzawebjpa/src/java/Entity/ValorVenda.java</file>
             <file>file:/C:/Dev/Projetos/projeto_fac/projetojsfjpa/pizzawebjpa/src/java/RN/ProdutosRN.java</file>
             <file>file:/C:/Dev/Projetos/projeto_fac/projetojsfjpa/pizzawebjpa/web/paginas/Produto.xhtml</file>
             <file>file:/C:/Dev/Projetos/projeto_fac/projetojsfjpa/pizzawebjpa/src/java/filtros/FilterEntity.java</file>
+            <file>file:/C:/Dev/Projetos/projeto_fac/projetojsfjpa/pizzawebjpa/web/paginas/Empresa.xhtml</file>
         </group>
     </open-files>
 </project-private>

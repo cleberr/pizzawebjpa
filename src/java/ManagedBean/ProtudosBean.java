@@ -7,9 +7,11 @@ package ManagedBean;
 
 import Entity.Produto;
 import Entity.TipoProduto;
+import Entity.ValorVenda;
 import RN.ProdutosRN;
 import antlr.debug.TraceEvent;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -17,6 +19,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,7 +34,7 @@ public class ProtudosBean {
     private Produto produto = new Produto();
     private List<Produto> listProdutos = new ArrayList<Produto>();
     private List<TipoProduto> listTipoProdutos= new ArrayList<TipoProduto>();
-   
+   private ValorVenda valorVenda = new ValorVenda();
     @PostConstruct  
     public void init(){  
     
@@ -39,21 +42,55 @@ public class ProtudosBean {
        listTipoProdutos= prn.pesqTipoDeProdutos();
     }
     public void novoCadastro() {
-       System.out.print(produto.getNome());
         produto = new Produto();
+        valorVenda= new ValorVenda();
         setCodigo(null);
     }
+    
+    public void valorSelecionado(ValorVenda valor)
+    {
+     this.valorVenda=valor;
+    }
+    
+   public void incluirValor()
+   {
+   if (this.valorVenda.getId()== null || this.valorVenda.getId()==0) {
+            if (this.produto.getValorVendaList() == null) {
+                this.produto.setValorVendaList(new ArrayList<ValorVenda>());
+            }
+            ValorVenda v = this.valorVenda;
+            v.setIdProduto(produto);
+            produto.getValorVendaList().add(v);
+            this.valorVenda = new ValorVenda();
+        } else {
+            this.valorVenda = new ValorVenda();
+        }
+   }
 
     public void pesqProduto() {
         if (!"".equals(this.produto.getNome())) {
             ProdutosRN prn = new ProdutosRN();
-            listProdutos = prn.pesqProdutos(this.produto.getNome());
+            listProdutos = prn.pesqProdutos(this.produto.getNome().toString());
            
         }
         else{
                addMessage("Nome inválido");
         }
     }
+    
+    
+    
+        public Collection<SelectItem> getCarregarSelect() {           
+            Collection<SelectItem> lst = new ArrayList<SelectItem>();        
+            lst.add(new SelectItem(null, "Selecione o estado"));      //Primeiro item do select   
+            
+            for (int i = 0; i < listTipoProdutos.size(); i++) {          
+                lst.add(new SelectItem(listTipoProdutos.get(i).getIdTipoProduto().toString(), listTipoProdutos.get(i).getDescricao()));  
+                //new SelectItem(valor, rótulo);  
+                //no exemplo acima, o estadoId() é o valor, e o nomeEstado() é o rótulo, é tudo carregado aqui  
+            }          
+            return lst;          
+        }  
 
     public void pesqProdutoCodigo() {
         if (this.codigo!= null && this.codigo>0) {
@@ -135,5 +172,14 @@ public class ProtudosBean {
     public void setListTipoProdutos(List<TipoProduto> listTipoProdutos) {
         this.listTipoProdutos = listTipoProdutos;
     }
+
+    public ValorVenda getValorVenda() {
+        return valorVenda;
+    }
+
+    public void setValorVenda(ValorVenda valorVenda) {
+        this.valorVenda = valorVenda;
+    }
+    
 
 }

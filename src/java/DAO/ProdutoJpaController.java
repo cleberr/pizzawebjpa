@@ -34,7 +34,7 @@ public class ProdutoJpaController implements Serializable {
     }
 
     public List<Produto> pesqProdutos(String nomeProduto) {
-        Query query = em.createQuery("select p from Produto p where p.nome like :nome and p.ativo='S' ORDER BY p.nome", Produto.class);
+        Query query = em.createQuery("select p from Produto p where p.nome like :nome and p.ativo=1 ORDER BY p.nome", Produto.class);
         query.setParameter("nome", nomeProduto + "%");
         return query.getResultList();
 

@@ -18,59 +18,60 @@ and open the template in the editor.
             <h:form id="formPagina"> 
                 <p:growl id="growl" showDetail="false" sticky="true" />  
                 <p:panel  header="Cadastro de Produto" style="width: 89%">
-                    <p:panel styleClass="tirarBorda">
+                    <p:panel styleClass="tirarBorda" >
+                        <h:panelGrid columns="4">
+                            <h:outputText  value="Ativo" />
+                            <h:panelGroup>
+                                <p:selectBooleanCheckbox   value="#{produtosBean.produto.ativo}"/>
+                            </h:panelGroup>
+                            <h:outputText  value=" Nome    "/>
+                            <h:panelGroup>
+                                <p:inputText value="#{produtosBean.produto.nome}" style="width:450px;margin-right: 2px;background-color:#57B2CC;color: white"/>
+                                <p:commandButton icon="ui-icon-search" update="dataListProdutos, growl" oncomplete="PF('ListaProdutosDIalog').show()" id="btPesqNome"  actionListener="#{produtosBean.pesqProduto()}" ajax="true"/>
+                            </h:panelGroup>
 
-                        <h:outputText  value="Código   " />
-                        <h:panelGroup>
-                            <p:inputText   value="#{produtosBean.codigo}" style="width:80px;margin-right: 2px;background-color:#57B2CC;color: white"/>
-                            <p:commandButton icon="ui-icon-search" update="growl" id="btPesqcod"  actionListener="#{produtosBean.pesqProdutoCodigo()}"/>
-                        </h:panelGroup>
-                        <h:outputText  value=" Nome    "/>
-                        <h:panelGroup>
-                            <p:inputText value="#{produtosBean.produto.nome}" style="width:450px;margin-right: 2px;background-color:#57B2CC;color: white"/>
-                            <p:commandButton icon="ui-icon-search" update="dataListProdutos, growl" oncomplete="PF('ListaProdutosDIalog').show()" id="btPesqNome"  actionListener="#{produtosBean.pesqProduto()}" ajax="true"/>
-                        </h:panelGroup>
+                            <h:outputText  value=" Categoria    "/>
+                            <p:selectOneMenu  value="#{produtosBean.produto.tipoProduto.idTipoProduto}" styleClass="selectMenu" >
+                                <f:selectItems value="#{produtosBean.carregarSelect }" /> 
 
-                        <h:outputText  value=" Nome    "/>
-                        <p:selectOneMenu  value="#{produtosBean.produto.tipoProduto}" >
-                            <f:selectItem itemLabel="Select One" itemValue="" />  
-                            <f:selectItems value="#{produtosBean.listTipoProdutos}"  
-                                           var="tipo"  
-                                           itemLabel="#{tipo.descricao}"  
-                                           itemValue="#{tipo}"/>  
-                            
-                        </p:selectOneMenu>
+                            </p:selectOneMenu>
+                            <h:outputText value="Estoque Controlado: " />
 
-
-                        <h:outputText  value=" Medida    "/>
-                        <p:inputText value="#{produtosBean.produto.idUnidade}" style="width:30px;margin-right: 20px"/>
-                        <p:selectOneMenu  value="#{produtosBean.produto.idUnidade}" >
-                            <f:selectItem itemLabel="ML" itemValue="1" />
-                            <f:selectItem itemLabel="UN" itemValue="2" />
-                            <f:selectItem itemLabel="GRAMA" itemValue="3" />
-                            <f:selectItem itemLabel="KG" itemValue="4" />
-                        </p:selectOneMenu>
-                        <h:outputText  value=" Código de barras    "/>
-                        <p:inputText value="#{produtosBean.produto.codBarras}" style="width:150px"/>
-
-                    </p:panel>
-                    <p:panel styleClass="tirarBorda">
-                        <h:outputText  value="Descrição " />
-                        <h:inputText value="#{produtosBean.produto.descricao}" style="width:450px;margin-right: 20px"/>
-                        <h:outputText  value=" Qt. Minima "/>
-                        <p:inputText value="#{produtosBean.produto.quantidadeMinima}" style="width:40px;margin-right: 20px"/>
-                        <h:outputText  value=" Qt. Máxima "/>
-                        <p:inputText value="#{produtosBean.produto.quantidadeMaxima}" style="width:40px;margin-right: 20px"/>
-                        <h:outputText  value=" Valor de venda"/>
-                        <!--ENTIDADE DE VALOR DE VENDA? --><p:inputText value="#{produtosBean.produto.produtoVenda}" style="width:80px;margin-right: 20px"/>
-                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                            <h:outputText value="Tipo de Produto" />
-                         
+                            <p:selectBooleanCheckbox value="#{produtosBean.produto.controlaEstoque}">
+                                <p:ajax update="blocoControleEstoque" />
+                            </p:selectBooleanCheckbox>
                         </h:panelGrid>
                     </p:panel>
+
+
                     <br></br>
-                    <h:panelGroup id="blocoDeInformacoesExtras" >
-                        <p:panel style="width: 85%" rendered="${produtosBean.produto.idUnidade==2}">
+                    <h:panelGroup id="blocoControleEstoque" >
+                        <p:panel style="width: 85%" rendered="${produtosBean.produto.controlaEstoque=='true'}">
+                            <h:outputText  value=" Medida    "/>
+                            <p:inputText value="#{produtosBean.produto.idUnidade}" style="width:30px;margin-right: 20px"/>
+                            <p:selectOneMenu  value="#{produtosBean.produto.idUnidade}" >
+                                <f:selectItem itemLabel="ML" itemValue="1" />
+                                <f:selectItem itemLabel="UN" itemValue="2" />
+                                <f:selectItem itemLabel="GRAMA" itemValue="3" />
+                                <f:selectItem itemLabel="KG" itemValue="4" />
+                            </p:selectOneMenu>
+                            <h:outputText  value=" Código de barras    "/>
+                            <p:inputText value="#{produtosBean.produto.codBarras}" style="width:150px"/>
+
+
+                            <p:panel styleClass="tirarBorda">
+                                <h:outputText  value=" Qt. Minima "/>
+                                <p:inputText value="#{produtosBean.produto.quantidadeMinima}" style="width:40px;margin-right: 20px"/>
+                                <h:outputText  value=" Qt. Máxima "/>
+                                <p:inputText value="#{produtosBean.produto.quantidadeMaxima}" style="width:40px;margin-right: 20px"/>
+                              
+                            </p:panel>
+                        </p:panel>
+                    </h:panelGroup>
+
+
+                 <!--   <h:panelGroup id="blocoDeInformacoesExtras" >
+                        <p:panel style="width: 85%" rendered="${produtosBean.produto.controlaEstoque=='true'}">
                             <h:outputText  value="Código   " />
                             <p:inputText  value="#{produtosBean.produto.idProduto}" style="width:80px;margin-right: 20px;background-color:#57B2CC;color: white"/>
                             <h:outputText  value=" Nome    "/>
@@ -83,6 +84,47 @@ and open the template in the editor.
 
                         </p:panel>
                     </h:panelGroup>
+-->
+                    <!--Valor Venda-->
+                    <h:panelGroup id="blocoValorVenda" >
+                        <p:panel style="width: 85%">
+                            <h:panelGrid columns="4" id="panelValor">
+                                <h:outputText  value="Valor Custo" />
+                                <h:outputText  value="Valor" />
+                                <h:outputText  value="Início"/>
+                                <h:outputText  value="Final"/>
+                                <p:inputText  value="#{produtosBean.valorVenda.valorCusto}" style="width:80px;margin-right: 20px;"/>
+                                <p:inputText  value="#{produtosBean.valorVenda.valor}" style="width:80px;margin-right: 20px;"/>
+                                <p:calendar id="dataini" value="#{produtosBean.valorVenda.dataVigencia}" pattern="dd/MM/yyyy/"/>
+                                <h:panelGroup>
+                                    <p:calendar id="datafim" value="#{produtosBean.valorVenda.dataVigenciaFinal}"  pattern="dd/MM/yyyy/"/>
+                                    <p:commandButton title="Incluir Valor"  update="gridValor, panelValor" icon="ui-icon-check"  ajax="true" actionListener="#{produtosBean.incluirValor()}" style="margin-left: 5px;height: 25px"/>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <!--grid valor produtos-->
+                            <p:dataTable style="width:  550px" id="gridValor" var="valor" value="#{produtosBean.produto.valorVendaList}" scrollHeight="75%">
+                               
+                                <p:column headerText="Valor Custo"  style="width:  50px">
+                                    <h:outputText value="#{valor.valorCusto}" />
+                                </p:column>
+                                <p:column headerText="Valor"  style="width:  50px">
+                                    <h:outputText value="#{valor.valor}" />
+                                </p:column>
+
+                                <p:column headerText="Início" >
+                                    <h:outputText value="#{valor.dataVigencia}" style="width: 150px" />
+                                </p:column>
+                                <p:column headerText="Final" >
+                                    <h:outputText value="#{valor.dataVigenciaFinal}" style="width: 150px" />
+                                </p:column>
+                                <p:column headerText="Alterar">
+                                    <p:commandButton icon="ui-icon-check"  actionListener="#{produtosBean.valorSelecionado(valor)}" ajax="false" />
+                                </p:column>
+                            </p:dataTable>
+
+                        </p:panel>
+                    </h:panelGroup>
+
                     <p:dialog widgetVar="ListaProdutosDIalog" modal="true" width="50%" header="Produtos">
                         <p:dataTable id="dataListProdutos"  var="produtos" value="#{produtosBean.listProdutos}">
                             <p:column headerText="Código">
@@ -103,12 +145,12 @@ and open the template in the editor.
                     </p:dialog>
                     <br></br>
                     <br></br>
-                   
+
                 </p:panel>
-                 <h:panelGroup style="padding-left: 77%">
-                        <p:commandButton ajax="false" update="growl" value="Gravar" actionListener="#{produtosBean.gravarProduto()}"></p:commandButton>
-                        <p:commandButton ajax="false" id="btNovo" value="Novo" actionListener="#{produtosBean.novoCadastro()}"></p:commandButton>
-                    </h:panelGroup>
+                <h:panelGroup style="padding-left: 77%">
+                    <p:commandButton ajax="false" update="growl" value="Gravar" actionListener="#{produtosBean.gravarProduto()}"></p:commandButton>
+                    <p:commandButton ajax="false" id="btNovo" value="Novo" actionListener="#{produtosBean.novoCadastro()}"></p:commandButton>
+                </h:panelGroup>
             </h:form>
         </ui:define>
     </ui:composition>

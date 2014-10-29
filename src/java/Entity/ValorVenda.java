@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Entity;
 
 import java.io.Serializable;
@@ -29,18 +28,14 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "valor_venda")
-@NamedQueries({
-    @NamedQuery(name = "ValorVenda.findAll", query = "SELECT v FROM ValorVenda v"),
-    @NamedQuery(name = "ValorVenda.findByValor", query = "SELECT v FROM ValorVenda v WHERE v.valor = :valor"),
-    @NamedQuery(name = "ValorVenda.findByDataVigencia", query = "SELECT v FROM ValorVenda v WHERE v.dataVigencia = :dataVigencia"),
-    @NamedQuery(name = "ValorVenda.findByDataVigenciaFinal", query = "SELECT v FROM ValorVenda v WHERE v.dataVigenciaFinal = :dataVigenciaFinal"),
-    @NamedQuery(name = "ValorVenda.findByIdUsuarioCadastro", query = "SELECT v FROM ValorVenda v WHERE v.idUsuarioCadastro = :idUsuarioCadastro"),
-    @NamedQuery(name = "ValorVenda.findById", query = "SELECT v FROM ValorVenda v WHERE v.id = :id")})
 public class ValorVenda implements Serializable {
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "VALOR", columnDefinition = "Decimal (10,2)")
     private BigDecimal valor;
+    @Column(name = "VALOR_CUSTO", columnDefinition = "Decimal (10,2)")
+    private BigDecimal valorCusto;
     @Column(name = "DATA_VIGENCIA")
     @Temporal(TemporalType.DATE)
     private Date dataVigencia;
@@ -60,16 +55,20 @@ public class ValorVenda implements Serializable {
     public ValorVenda() {
     }
 
-    public ValorVenda(Integer id) {
-        this.id = id;
-    }
-
     public BigDecimal getValor() {
         return valor;
     }
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+    public BigDecimal getValorCusto() {
+        return valorCusto;
+    }
+
+    public void setValorCusto(BigDecimal valorCusto) {
+        this.valorCusto = valorCusto;
     }
 
     public Date getDataVigencia() {
@@ -112,29 +111,5 @@ public class ValorVenda implements Serializable {
         this.idProduto = idProduto;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ValorVenda)) {
-            return false;
-        }
-        ValorVenda other = (ValorVenda) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Entity.ValorVenda[ id=" + id + " ]";
-    }
     
 }

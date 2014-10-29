@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Entity;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import static javax.persistence.CascadeType.ALL;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +18,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,6 +30,7 @@ import javax.persistence.TemporalType;
 @Table(name = "produto")
 
 public class Produto implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
@@ -39,8 +40,8 @@ public class Produto implements Serializable {
     private String nome;
     @Column(name = "DESCRICAO", length = 100)
     private String descricao;
-    @Column(name = "ATIVO", length = 1)
-    private Character ativo;
+    @Column(name = "ATIVO", columnDefinition = "TINYINT default 1")
+    private Boolean ativo;
     @Column(name = "MATERIA_PRIMA", length = 1)
     private Character materiaPrima;
     @Column(name = "PERMITE_FRACIONAR", length = 1)
@@ -50,8 +51,6 @@ public class Produto implements Serializable {
     private BigDecimal quantidadeMinima;
     @Column(name = "QUANTIDADE_MAXIMA")
     private BigDecimal quantidadeMaxima;
-    @Column(name = "PRODUTO_VENDA")
-    private Character produtoVenda;
     @Column(name = "DATA_CADASTRO")
     @Temporal(TemporalType.DATE)
     private Date dataCadastro;
@@ -65,11 +64,12 @@ public class Produto implements Serializable {
     private BigDecimal quantidadeEmbalagem;
     @Column(name = "QUANTIDADE_ESTOQUE")
     private BigDecimal quantidadeEstoque;
+    @Column(name = "CONTROLA_ESTOQUE", columnDefinition = "TINYINT default 1")
+    private Boolean controlaEstoque;
     @JoinColumn(name = "ID_TIPO_PRODUTO", referencedColumnName = "ID_TIPO_PRODUTO")
     @ManyToOne
-    private TipoProduto tipoProduto;
-    
-    @OneToMany(mappedBy = "idProduto")
+    private TipoProduto tipoProduto = new TipoProduto();
+    @OneToMany(fetch = FetchType.LAZY, cascade = ALL, mappedBy = "idProduto")
     private List<ValorVenda> valorVendaList;
     @OneToMany(mappedBy = "idProduto")
     private List<CompraProdutos> compraProdutosList;
@@ -98,11 +98,11 @@ public class Produto implements Serializable {
         this.descricao = descricao;
     }
 
-    public Character getAtivo() {
+    public Boolean getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(Character ativo) {
+    public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
     }
 
@@ -136,14 +136,6 @@ public class Produto implements Serializable {
 
     public void setQuantidadeMaxima(BigDecimal quantidadeMaxima) {
         this.quantidadeMaxima = quantidadeMaxima;
-    }
-
-    public Character getProdutoVenda() {
-        return produtoVenda;
-    }
-
-    public void setProdutoVenda(Character produtoVenda) {
-        this.produtoVenda = produtoVenda;
     }
 
     public Date getDataCadastro() {
@@ -217,4 +209,13 @@ public class Produto implements Serializable {
     public void setCompraProdutosList(List<CompraProdutos> compraProdutosList) {
         this.compraProdutosList = compraProdutosList;
     }
+
+    public Boolean getControlaEstoque() {
+        return controlaEstoque;
+    }
+
+    public void setControlaEstoque(Boolean controlaEstoque) {
+        this.controlaEstoque = controlaEstoque;
+    }
+
 }

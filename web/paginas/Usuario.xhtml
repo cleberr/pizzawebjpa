@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   
+        <ui:composition template="../template/menuPrincipal.xhtml">
+            <ui:define name="pagina">
+                <h:form> 
+                    <p:panel header="Usuário" style="width: 60%">
+                        <p:panel styleClass="tirarBorda">
+                            
+                            <h:outputText  value="Funcionário   " />
+                              <p:inputText  value="" style="width:150px;margin-right: 20px;color: white"/>
+
+                            <h:outputText  value="Nome de Usuário   " />
+                              <p:inputText  value="" style="width:150px;margin-right: 20px;color: white"/>
+                          
+                         <h:outputText  value= " Ativo   "  />
+                         <p:selectBooleanCheckbox  value = ""  />
+                              
+                            </p:panel>
+                          <br></br>
+                        <br></br>
+                         <h3> Funcionalidade </h3>  
+                        
+                          <p:panel styleClass="tirarBorda">
+                             <h:panelGrid columns="4"  > 
+                        <p:selectBooleanCheckbox  value = ""  />
+                         <h:outputText  value= " Relatórios"  />
+                         <p:selectBooleanCheckbox  value = ""  />
+                         <h:outputText  value= " Produtos"  />
+                         <p:selectBooleanCheckbox  value = ""  />
+                         <h:outputText  value= " Taxas"  />
+                         <p:selectBooleanCheckbox  value = ""  />
+                         <h:outputText  value= " Pedidos"  />
+                         <p:selectBooleanCheckbox  value = ""  />
+                         <h:outputText  value= " Funcionários"  />
+                         <p:selectBooleanCheckbox  value = ""  />
+                         <h:outputText  value= " Clientes"  />
+                         <p:selectBooleanCheckbox  value = ""  />
+                         <h:outputText  value= " Caixa"  />
+                         <p:selectBooleanCheckbox  value = ""  />
+                         <h:outputText  value= " Cozinha"  />
+                         <p:selectBooleanCheckbox  value = ""  />
+                         <h:outputText  value= " Usuários"  />
+                         <p:selectBooleanCheckbox  value = ""  />
+                         <h:outputText  value= " Acompanhar Pedidos"  />
+                         
+                         </h:panelGrid> 
+                        
+                        </p:panel>
+                        <br></br>
+                        <br></br>
+                          <h:panelGroup style="padding-left: 77%">
+                              <p:commandButton value="Gravar" actionListener="#{produtosBean.gravarProduto()}"></p:commandButton>
+                                <p:commandButton value="Novo" actionListener="#{produtosBean.novoCadastro()}"></p:commandButton>
+                               </h:panelGroup>
+                     
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+   
+
+</html>

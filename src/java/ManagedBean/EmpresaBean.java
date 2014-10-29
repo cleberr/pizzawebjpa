@@ -128,7 +128,7 @@ public class EmpresaBean implements Serializable {
       }
     }
     
-    public void incluirIaxaPadrao() {
+    public void incluirTaxaPadrao() {
        if (configRuas.size()>0)
        {
            for (int i = 0; i < configRuas.size(); i++) {

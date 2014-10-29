@@ -19,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,12 +30,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "cliente")
-@NamedQueries({
-    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
-    @NamedQuery(name = "Cliente.findByIdCliente", query = "SELECT c FROM Cliente c WHERE c.idCliente = :idCliente"),
-    @NamedQuery(name = "Cliente.findByIdUsuarioCadastro", query = "SELECT c FROM Cliente c WHERE c.idUsuarioCadastro = :idUsuarioCadastro"),
-    @NamedQuery(name = "Cliente.findByObservacao", query = "SELECT c FROM Cliente c WHERE c.observacao = :observacao"),
-    @NamedQuery(name = "Cliente.findByDataCadastro", query = "SELECT c FROM Cliente c WHERE c.dataCadastro = :dataCadastro")})
+
 public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -51,7 +47,7 @@ public class Cliente implements Serializable {
     @OneToMany(mappedBy = "idCliente")
     private List<Pedido> pedidoList;
     @JoinColumn(name = "ID_PESSOA", referencedColumnName = "ID_PESSOA")
-    @ManyToOne
+    @OneToOne
     private Pessoa idPessoa;
 
     public Cliente() {

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="../template/menuPrincipal.xhtml">
+
+    </ui:composition>
+
+    <h:form id="form">
+        <p:growl id="msg" showDetail="true" />
+
+        <h3 style="margin-top:0">Produtos</h3>
+        
+                <h:panelGrid columns="2" cellpadding="10">
+                    <h:form> 
+                        <p:panel header="Cadastro de Compra" >
+                            <p:panel styleClass="tirarBorda">
+
+                                <h:outputText  value="N° da Compra   " />
+                                <p:inputText  value="#{comprasBean.c.idCompra}" style="width:80px;margin-right: 20px;background-color:#57B2CC;color: white"/>
+                                <p:outputLabel for="button" value="Data " />
+                                <p:calendar id="button" value="#{comprasBean.c.dataCompra}" showOn="button" />
+                                <p:outputLabel for="fornecedor" value="Fornecedor " />
+                                <p:selectOneMenu id="fornecedor" value="#{comprasBean.c.idFornecedor}" effect="fold" editable="true">
+                                    <f:selectItem itemLabel="Carrefour" itemValue="" />
+                                    <f:selectItem itemLabel="Coca-Cola" itemValue="" />
+                                    <f:selectItem itemLabel="Fleischmann" itemValue="" />
+                                    <f:selectItems value="#{comprasBean.c.idFornecedor}" />
+                                </p:selectOneMenu>
+
+                                <h:outputText  value=" Valor total "/>
+                                <p:inputText value="#{comprasBean.c.valorTotal}" style="width:80px"/>
+
+
+                            </p:panel>
+                            <br></br>
+                            <h:outputText  value="Itens" />
+                            <p:panel>
+                                <h:outputText  value="Código   " />
+                                <p:inputText  value="#{protudosBean.p.idProduto}" style="width:80px;margin-right: 20px;background-color:#57B2CC;color: white"/>
+                                <h:outputText  value=" Nome    "/>
+                                <p:inputText value="#{protudosBean.p.nome}" style="width:250px;margin-right: 20px;background-color:#57B2CC;color: white"/>
+                                <h:outputText  value="Quantidade "/>
+                                <p:inputText value="#{protudosBean.p.quantidadeMinima}" style="width:50px;margin-right: 20px"/>
+                                <h:outputText  value=" Valor Custo "/>
+                                <p:inputText value="#{comprasBean.c.valorTotal}" style="width:80px"/>
+                                <p:commandButton value="Inserir"></p:commandButton>
+                                <br></br>
+                               
+
+
+                            </p:panel>
+
+
+
+                            <br></br>
+                            <br></br>
+                            <h:panelGroup style="padding-left: 70%">
+                                <p:commandButton value="Gravar"></p:commandButton>
+                                <p:commandButton value="Novo"></p:commandButton>
+                               
+                            </h:panelGroup>
+                        </p:panel>
+                    </h:form>
+                </h:panelGrid>
+          
+           
+
+   
+
+
+    </h:form>
+</html>

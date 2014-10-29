@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../template/menuPrincipal.xhtml">
+        <ui:define name="pagina">
+            <h:form> 
+                <p:panel header="Cadastro de Cliente" style="width: 89%">
+                    <p:panel styleClass="tirarBorda">
+
+                        <h:outputText  value="Telefone  " />
+                        <p:inputText  value="" />
+                        <h:outputText  value=" Nome " />
+                        <p:inputText value="" />
+                        <h:outputText  value=" Data de Nascimento "/>
+                        <p:inputText value="" />
+                        <br></br>
+                        <br></br>
+
+                        <h:outputText  value=" Logradouro    "/>
+                        <p:inputText value="" style="width:350px"/>
+                        <h:outputText  value=" Numero   "/>
+                        <p:inputText value="" style="width:50px"/>
+                        <h:outputText  value=" Bairro   "/>
+                        <p:inputText value="" style="width:150px;margin-right: 20px;background-color:#57B2CC;color: white"/>
+                        <br></br>
+                        <br></br>
+                        <h:outputText  value=" CEP    "/>
+                        <p:inputText value="" />
+                        <h:outputText  value=" Cidade   "/>
+                        <p:inputText value="" style="width:250px;margin-right: 20px"/>
+                        <p:selectOneMenu  value="" style="margin-right: 20px" >
+                                <f:selectItem itemLabel="SP" itemValue="1" />
+                                <f:selectItem itemLabel="RJ" itemValue="2" />
+ 
+                            </p:selectOneMenu>
+                        <br></br>
+                        <br></br>
+                        <h:outputText  value=" Ponto de referência    " />
+                        <p:inputText value="" style="width:60%;"/>
+                        <br></br>
+                        <br></br>
+                        <h:outputText  value=" Observações    " />
+                        <p:inputText value="" style="width:63%;"/>
+                        
+                         
+                        <br></br>
+                        <br></br>
+                          <h:panelGroup style="padding-left: 77%">
+                              <p:commandButton value="Gravar" actionListener="#{produtosBean.gravarProduto()}"></p:commandButton>
+                                <p:commandButton value="Novo" actionListener="#{produtosBean.novoCadastro()}"></p:commandButton>
+                               </h:panelGroup>
+                        
+                    </p:panel>
+
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+
+</html>

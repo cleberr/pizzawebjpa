@@ -12,7 +12,7 @@ fundoTitulo{
 
     width: 520px;
 }
-
+.selectMenu {vertical-align: top !important; }
 .tirarBorda{
     border-style: none;
 }

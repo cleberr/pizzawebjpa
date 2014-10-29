@@ -100,7 +100,7 @@
 
                             <h:panelGroup>
                                 <p:calendar id="datafim" value="#{empresaBean.configKM.data_final}"  pattern="dd/MM/yyyy/"/>
-                                <p:commandButton title="Incluir Confiruração" update="gridConfKM, incluirConfiguracao" icon="ui-icon-check"  ajax="true" actionListener="#{empresaBean.incluirConfKM()}" style="margin-left: 5px;height: 25px"/>
+                                <p:commandButton title="Incluir Configuração" update="gridConfKM, incluirConfiguracao" icon="ui-icon-check"  ajax="true" actionListener="#{empresaBean.incluirConfKM()}" style="margin-left: 5px;height: 25px"/>
                             </h:panelGroup>
 
 
@@ -256,7 +256,7 @@
                             <h:outputText  value="Taxa"/>
                             <h:panelGroup>
                                 <p:inputText value="#{empresaBean.taxaPadrao}" style="width:300px"/>
-                                <p:commandButton value="Incluir taxa" icon="ui-icon-check" update="gridconfRuas"  actionListener="#{empresaBean.incluirIaxaPadrao()}" ajax="true" />
+                                <p:commandButton value="Incluir taxa" icon="ui-icon-check" update="gridconfRuas"  actionListener="#{empresaBean.incluirTaxaPadrao()}" ajax="true" />
                                 <p:commandButton icon="ui-icon-check"  oncomplete="PF('localidadeDIalog').hide()" actionListener="#{empresaBean.incluirRuasSelecionadas()}" ajax="false" />
                             </h:panelGroup>
                         </h:panelGrid>
