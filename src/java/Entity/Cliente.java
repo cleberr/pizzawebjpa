@@ -46,9 +46,9 @@ public class Cliente implements Serializable {
     private Date dataCadastro;
     @OneToMany(mappedBy = "idCliente")
     private List<Pedido> pedidoList;
-    @JoinColumn(name = "ID_PESSOA", referencedColumnName = "ID_PESSOA")
-    @OneToOne
-    private Pessoa idPessoa;
+   // @JoinColumn(name = "ID_PESSOA", referencedColumnName = "ID_PESSOA")
+    //@OneToOne
+    //private Pessoa idPessoa;
 
     public Cliente() {
     }
@@ -97,13 +97,7 @@ public class Cliente implements Serializable {
         this.pedidoList = pedidoList;
     }
 
-    public Pessoa getIdPessoa() {
-        return idPessoa;
-    }
-
-    public void setIdPessoa(Pessoa idPessoa) {
-        this.idPessoa = idPessoa;
-    }
+    
 
     @Override
     public int hashCode() {

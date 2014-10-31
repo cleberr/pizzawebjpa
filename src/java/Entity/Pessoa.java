@@ -9,6 +9,7 @@ package Entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -62,8 +64,9 @@ public class Pessoa implements Serializable {
     @JoinColumn(name = "ID_TIPO", referencedColumnName = "ID_TIPO_PESSOA")
     @ManyToOne
     private TipoPessoa idTipo;
-    @OneToMany(mappedBy = "idPessoa")
-    private List<Cliente> clienteList;
+    
+    @OneToOne(cascade=CascadeType.ALL)
+     private Cliente clienteList;
     @OneToMany(mappedBy = "idPessoa")
     private List<Entregador> entregadorList;
     @OneToMany(mappedBy = "idPessoa")
@@ -148,11 +151,11 @@ public class Pessoa implements Serializable {
         this.idTipo = idTipo;
     }
 
-    public List<Cliente> getClienteList() {
+    public Cliente getClienteList() {
         return clienteList;
     }
 
-    public void setClienteList(List<Cliente> clienteList) {
+    public void setClienteList(Cliente clienteList) {
         this.clienteList = clienteList;
     }
 
