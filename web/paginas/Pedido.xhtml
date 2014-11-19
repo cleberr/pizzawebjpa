@@ -10,6 +10,12 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+        
+         <ui:composition template="../template/menuPrincipal.xhtml">
+            <ui:define name="pagina">
+                 </ui:define>
+        </ui:composition>
+                
     <head>
      
     </head>
@@ -17,28 +23,9 @@ and open the template in the editor.
         
         <p:growl id="growl" showDetail="false" sticky="true" />  
             <p:panelGrid columns="5" id="gridEdit">
-                <f:facet name="header">
-                    <p:outputLabel value="Cadastro de Bairros"/>
+               
 
-                </f:facet>
-                <p:outputLabel value="Telefone" style="width:100px"/>
-                <p:inputText value="#{usuarioBean.usuario.idPerfil}" readonly="true" style="width:100px"/>
-                
-                <p:outputLabel value="Nome"/>
-                <p:inputText value="#{bairroBean.bairro.nome}"/>
-                
-                <p:outputLabel value="data nasc.:"/>
-                <p:inputText value="#{bairroBean.bairro.cidade}"/>
-
-                <p:outputLabel value="end:"/>
-                <p:inputText value="#{bairroBean.bairro.uf}"/>
-                
-                <p:outputLabel value="Comp"/>
-                <p:inputText  value="#{bairroBean.bairro.taxaEntrega}"/>
-
-                <p:outputLabel value="Bairro" for="dd"/>
-                <p:inputText  value="#{bairroBean.bairro.taxaEntrega}"/>
-
+            
                 
                 
                 
